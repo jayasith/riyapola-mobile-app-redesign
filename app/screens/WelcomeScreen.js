@@ -1,18 +1,26 @@
 import React from "react";
-import { View, StyleSheet, StatusBar, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import colors from "../config/colors";
 
 const WelcomeScreen = () => {
 	return (
 		<View style={styles.background}>
-			<Image style={styles.logo} source={require("../assets/logo.png")} />
+			<Image
+				style={styles.logo}
+				source={require("../assets/images/logo.png")}
+			/>
 			<View>
 				<Image
 					style={styles.illustration}
-					source={require("../assets/illustration.png")}
+					source={require("../assets/images/illustration.png")}
 				/>
 			</View>
+			<PrimaryButton
+				title="Get Started"
+				onPress={() => console.log("tapped")}
+			/>
 		</View>
 	);
 };
@@ -27,6 +35,7 @@ const styles = StyleSheet.create({
 
 	illustration: {
 		left: 0,
+		marginTop: 60,
 	},
 
 	logo: {

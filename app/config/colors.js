@@ -3,5 +3,5 @@ export default {
 	secondary: "#EDF1FF",
 	textPrimary: "#304756",
 	textSecondary: "#97A3AB",
-	white: "fff",
+	white: "#FFF",
 };
