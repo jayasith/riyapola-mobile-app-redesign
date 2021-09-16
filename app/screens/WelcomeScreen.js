@@ -17,7 +17,10 @@ const WelcomeScreen = () => {
 					source={require("../assets/images/illustration.png")}
 				/>
 			</View>
-			<PrimaryButton title="Get Started" />
+			<PrimaryButton
+				title="Get Started"
+				onPress={() => console.log("tapped")}
+			/>
 		</View>
 	);
 };

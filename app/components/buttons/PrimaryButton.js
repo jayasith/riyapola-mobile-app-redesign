@@ -1,13 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
 import colors from "../../config/colors";
 
-const PrimaryButton = ({ title }) => {
+const PrimaryButton = ({ title, onPress }) => {
 	return (
-		<View style={styles.button}>
+		<TouchableOpacity style={styles.button} onPress={onPress}>
 			<Text style={styles.text}>{title}</Text>
-		</View>
+		</TouchableOpacity>
 	);
 };
 
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 		fontFamily: "poppins-medium",
 		color: colors.white,
 		fontSize: 18,
+		letterSpacing: 2,
 	},
 });
 
