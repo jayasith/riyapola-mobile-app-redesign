@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import colors from "../config/colors";
 
@@ -16,6 +17,7 @@ const WelcomeScreen = () => {
 					source={require("../assets/images/illustration.png")}
 				/>
 			</View>
+			<PrimaryButton title="Get Started" />
 		</View>
 	);
 };
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
 
 	illustration: {
 		left: 0,
-		marginTop: 50,
+		marginTop: 60,
 	},
 
 	logo: {
