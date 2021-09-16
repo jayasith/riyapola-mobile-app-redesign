@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 
 	logo: {
 		position: "absolute",
-		top: 50,
+		top: 80,
 		alignSelf: "center",
 		zIndex: 2,
 	},
