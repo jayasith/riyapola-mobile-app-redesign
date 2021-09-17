@@ -5,7 +5,7 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import colors from "../config/colors";
 
-const WelcomeScreen = () => {
+const LoadingScreen = () => {
 	return (
 		<View style={styles.background}>
 			<StatusBar backgroundColor={colors.secondary} barStyle="dark-content" />
@@ -19,10 +19,10 @@ const WelcomeScreen = () => {
 					source={require("../assets/images/illustration.png")}
 				/>
 			</View>
-			<PrimaryButton
+			{/* <PrimaryButton
 				title="Get Started"
 				onPress={() => console.log("tapped")}
-			/>
+			/> */}
 		</View>
 	);
 };
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default WelcomeScreen;
+export default LoadingScreen;
