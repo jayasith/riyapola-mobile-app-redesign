@@ -7,6 +7,7 @@ import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
+import NewListingScreen from "./app/screens/NewListingScreen";
 
 
 const getFonts = () =>

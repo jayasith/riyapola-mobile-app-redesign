@@ -3,9 +3,9 @@ import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
 import colors from "../../config/colors";
 
-const PrimaryButton = ({ title, onPress }) => {
+const PrimaryButton = ({ title, onPress, style }) => {
 	return (
-		<TouchableOpacity style={styles.button} onPress={onPress}>
+		<TouchableOpacity style={[styles.button, style]} onPress={onPress}>
 			<Text style={styles.text}>{title}</Text>
 		</TouchableOpacity>
 	);
