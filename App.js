@@ -22,7 +22,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<WelcomeScreen />
+				<NewListingScreen />
 			</>
 		);
 	} else {
