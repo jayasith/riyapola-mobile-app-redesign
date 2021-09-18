@@ -5,6 +5,7 @@ import AppLoading from "expo-app-loading";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
+import NewListingScreen from "./app/screens/NewListingScreen";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -19,7 +20,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<HomeScreen />
+				<NewListingScreen />
 			</>
 		);
 	} else {
