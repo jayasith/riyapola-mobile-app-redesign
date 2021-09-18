@@ -10,7 +10,7 @@ const TitleText = ({ children, style }) => {
 const styles = StyleSheet.create({
 	text: {
 		fontFamily: "poppins-bold",
-		fontSize: 50,
+		fontSize: 40,
 		fontWeight: "600",
 		color: colors.textPrimary,
 	},

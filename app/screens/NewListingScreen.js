@@ -3,9 +3,11 @@ import { View, StatusBar, StyleSheet } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import TextInputWithIcon from "../components/inputs/TextInputWithIcon";
+import CategoryPicker from "../components/pickers/CategoryPicker";
 import TitleText from "../components/texts/TitleText";
 
 import colors from "../config/colors";
+import categories from "../config/categories";
 
 const NewListingScreen = () => {
 	return (
@@ -14,6 +16,11 @@ const NewListingScreen = () => {
 			<TitleText style={styles.title}>New Listing</TitleText>
 			<TextInputWithIcon placeholder="Title " icon="create" />
 			<TextInputWithIcon placeholder="Price " icon="attach-money" />
+			<CategoryPicker
+				placeholder="Category "
+				icon="apps"
+				categories={categories}
+			/>
 			<TextInputWithIcon placeholder="Description " icon="subtitles" />
 			<TextInputWithIcon placeholder="Location " icon="location-on" />
 			<PrimaryButton title="Save" style={{ width: "90%", top: 20 }} />
