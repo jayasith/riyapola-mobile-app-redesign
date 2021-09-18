@@ -6,6 +6,7 @@ import { Feather } from "@expo/vector-icons";
 import colors from "../config/colors";
 import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
+import Card from "../components/cards/Card";
 
 const WelcomeScreen = () => {
 	return (
@@ -26,6 +27,22 @@ const WelcomeScreen = () => {
 			</View>
 			<View style={{ paddingLeft: 25, paddingVertical: 30 }}>
 				<SubtitleText>Latest Listings</SubtitleText>
+			</View>
+			<View style={styles.cardsContainer}>
+				<Card
+					image={require("../assets/images/mustang-1969.png")}
+					title="Ford Mustang 1969"
+					price="50000.00"
+					seller="Thushara"
+					date={new Date().toDateString()}
+				/>
+				<Card
+					image={require("../assets/images/rs6.png")}
+					title="Audi RS6 Avant"
+					price="50000.00"
+					seller="Thushara"
+					date={new Date().toDateString()}
+				/>
 			</View>
 		</View>
 	);
@@ -52,6 +69,11 @@ const styles = StyleSheet.create({
 		width: 130,
 		height: 30,
 		resizeMode: "contain",
+	},
+
+	cardsContainer: {
+		paddingHorizontal: 30,
+		width: "100%",
 	},
 });
 
