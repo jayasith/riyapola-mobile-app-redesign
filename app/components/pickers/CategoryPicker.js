@@ -14,7 +14,13 @@ import ParagraphText from "../texts/ParagraphText";
 import colors from "../../config/colors";
 import PickerItem from "./PickerItem";
 
-const CategoryPicker = ({ icon, placeholder, categories }) => {
+const CategoryPicker = ({
+	icon,
+	placeholder,
+	selectedItem,
+	onSelectItem,
+	categories,
+}) => {
 	const [show, setShow] = useState(false);
 
 	return (
@@ -25,7 +31,9 @@ const CategoryPicker = ({ icon, placeholder, categories }) => {
 						{icon && (
 							<MaterialIcons name={icon} size={25} style={styles.icon} />
 						)}
-						<ParagraphText>{placeholder}</ParagraphText>
+						<ParagraphText>
+							{selectedItem ? selectedItem.label : placeholder}
+						</ParagraphText>
 					</View>
 					<MaterialIcons
 						name="keyboard-arrow-down"
@@ -44,7 +52,13 @@ const CategoryPicker = ({ icon, placeholder, categories }) => {
 					data={categories}
 					keyExtractor={(category) => category.value.toString()}
 					renderItem={({ item }) => (
-						<PickerItem label={item.label} onPress={() => console.log(item)} />
+						<PickerItem
+							label={item.label}
+							onPress={() => {
+								setShow(false);
+								onSelectItem(item);
+							}}
+						/>
 					)}
 				/>
 			</Modal>
