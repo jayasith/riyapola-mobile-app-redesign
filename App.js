@@ -1,21 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
+import LoginScreen from "./app/screens/LoginScreen";
+import SignupScreen from "./app/screens/SignupScreen";
+import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import LoadingScreen from "./app/screens/LoadingScreen";
+import HomeScreen from "./app/screens/HomeScreen";
+import NewListingScreen from "./app/screens/NewListingScreen";
+
+
+const getFonts = () =>
+	Font.loadAsync({
+		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
+		"poppins-medium": require("./app/assets/fonts/Poppins-Medium.ttf"),
+		"poppins-bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
+	});
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+	const [fontLoaded, setFontLoaded] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	if (fontLoaded) {
+		return (
+			<>
+				<NewListingScreen />
+			</>
+		);
+	} else {
+		return (
+			<>
+				<AppLoading
+					startAsync={getFonts}
+					onFinish={() => setFontLoaded(true)}
+					onError={(err) =>
+						console.error("error occurred while loading fonts", err)
+					}
+				/>
+			</>
+		);
+	}
+}
