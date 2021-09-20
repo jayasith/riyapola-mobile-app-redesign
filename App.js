@@ -9,7 +9,6 @@ import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
 import NewListingScreen from "./app/screens/NewListingScreen";
 
-
 const getFonts = () =>
 	Font.loadAsync({
 		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
