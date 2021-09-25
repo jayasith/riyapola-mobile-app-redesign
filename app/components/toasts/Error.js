@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 
 import ParagraphText from "../texts/ParagraphText";
 
-const Error = ({ error }) => {
-	return error ? (
+const Error = ({ error, visible }) => {
+	return error && visible ? (
 		<ParagraphText style={styles.error}>{error}</ParagraphText>
 	) : null;
 };

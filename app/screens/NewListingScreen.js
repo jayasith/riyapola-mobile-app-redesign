@@ -34,22 +34,24 @@ const NewListingScreen = () => {
 			onSubmit={(values) => console.log(values)}
 			validationSchema={validationSchema}
 		>
-			{({ handleChange, handleSubmit, errors }) => (
+			{({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
 				<>
 					<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 					<TitleText style={styles.title}>New Listing</TitleText>
-					<Error error={errors.title} />
+					<Error error={errors.title} visible={touched.title} />
 					<TextInputWithIcon
 						placeholder="Title "
 						icon="create"
 						onChangeText={handleChange("title")}
+						onBlur={() => setFieldTouched("title")}
 					/>
-					<Error error={errors.price} />
+					<Error error={errors.price} visible={touched.price} />
 					<TextInputWithIcon
 						placeholder="Price "
 						icon="attach-money"
 						keyboardType="decimal-pad"
 						onChangeText={handleChange("price")}
+						onBlur={() => setFieldTouched("price")}
 					/>
 					<CategoryPicker
 						selectedItem={category}
@@ -57,19 +59,22 @@ const NewListingScreen = () => {
 						placeholder="Category "
 						icon="apps"
 						categories={categories}
-						onChangeText={handleChange("category")}
+						// onChangeText={handleChange("category")}
+						// onBlur={() => setFieldTouched("category")}
 					/>
-					<Error error={errors.description} />
+					<Error error={errors.description} visible={touched.description} />
 					<TextInputWithIcon
 						placeholder="Description "
 						icon="subtitles"
 						onChangeText={handleChange("description")}
+						onBlur={() => setFieldTouched("description")}
 					/>
-					<Error error={errors.location} />
+					<Error error={errors.location} visible={touched.location} />
 					<TextInputWithIcon
 						placeholder="Location "
 						icon="location-on"
 						onChangeText={handleChange("location")}
+						onBlur={() => setFieldTouched("location")}
 					/>
 					<PrimaryButton
 						title="Save"
