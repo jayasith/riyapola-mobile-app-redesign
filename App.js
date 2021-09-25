@@ -8,6 +8,9 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
 import NewListingScreen from "./app/screens/NewListingScreen";
+import PersonalData from "./app/screens/Personaldata";
+import Changepassword from "./app/screens/Changepassword";
+import ChangeEmail from "./app/screens/ChangeEmail";
 
 const getFonts = () =>
 	Font.loadAsync({
