@@ -1,21 +1,29 @@
 import React from "react";
 import { useFormikContext } from "formik";
 
-import CategoryPicker from "./CategoryPicker";
+import CategoryPicker from "./ItemPicker";
 import Error from "../toasts/Error";
 
-//! icon or name
-const PickerWithError = ({ icon, name, categories, placeholder }) => {
+const PickerWithError = ({
+	icon,
+	name,
+	PickerItemComponent,
+	items,
+	placeholder,
+	numberOfColumns,
+}) => {
 	const { errors, setFieldValue, touched, values } = useFormikContext();
 
 	return (
 		<>
 			<CategoryPicker
-				categories={categories}
-				onSelectItem={(category) => setFieldValue(name, category)}
+				items={items}
+				onSelectItem={(item) => setFieldValue(name, item)}
 				icon={icon}
 				placeholder={placeholder}
+				numberOfColumns={numberOfColumns}
 				selectedItem={values[name]}
+				PickerItemComponent={PickerItemComponent}
 			/>
 			<Error error={errors[name]} visible={touched[name]} />
 		</>

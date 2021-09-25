@@ -19,7 +19,9 @@ const CategoryPicker = ({
 	placeholder,
 	selectedItem,
 	onSelectItem,
-	categories,
+	items,
+	numberOfColumns = 1,
+	PickerItemComponent = PickerItem,
 }) => {
 	const [show, setShow] = useState(false);
 
@@ -49,15 +51,15 @@ const CategoryPicker = ({
 					style={{ paddingTop: 50 }}
 				/>
 				<FlatList
-					data={categories}
-					keyExtractor={(category) => category.value.toString()}
+					data={items}
+					numColumns={numberOfColumns}
+					keyExtractor={(item) => item.value.toString()}
 					renderItem={({ item }) => (
-						<PickerItem
-							label={item.label}
+						<PickerItemComponent
+							item={item}
 							onPress={() => {
 								setShow(false);
 								onSelectItem(item);
-								console.log(item);
 							}}
 						/>
 					)}

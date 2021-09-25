@@ -2,14 +2,15 @@ import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
+import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
+import PickerWithError from "../components/pickers/PickerWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
 
 import categories from "../config/categories";
 import colors from "../config/colors";
-import PickerWithError from "../components/pickers/PickerWithError";
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label("Title"),
@@ -48,7 +49,9 @@ const NewListingScreen = () => {
 			<PickerWithError
 				placeholder="Category "
 				icon="apps"
-				categories={categories}
+				items={categories}
+				numberOfColumns={3}
+				PickerItemComponent={CategoryPickerItem}
 			/>
 			<FormInputWithError
 				placeholder="Description "
