@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
-import CategoryPicker from "../components/pickers/CategoryPicker";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
@@ -10,23 +9,22 @@ import TitleText from "../components/texts/TitleText";
 
 import categories from "../config/categories";
 import colors from "../config/colors";
+import PickerWithError from "../components/pickers/PickerWithError";
 
 const validationSchema = Yup.object().shape({
-	title: Yup.string().required().label("Title"),
-	price: Yup.number().required().label("Price"),
+	title: Yup.string().required().min(1).label("Title"),
+	price: Yup.number().required().min(1).label("Price"),
 	description: Yup.string().required().label("Description"),
-	location: Yup.string().required().label("Location"),
+	location: Yup.string().required().nullable().label("Location"),
 });
 
 const NewListingScreen = () => {
-	const [category, setCategory] = useState(categories[0]);
-
 	return (
 		<Form
 			initialValues={{
 				title: "",
 				price: "",
-				category: "",
+				category: null,
 				description: "",
 				location: "",
 			}}
@@ -35,16 +33,19 @@ const NewListingScreen = () => {
 		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<TitleText style={styles.title}>New Listing</TitleText>
-			<FormInputWithError placeholder="Title " icon="create" name="email" />
+			<FormInputWithError
+				placeholder="Title "
+				icon="create"
+				name="email"
+				maxLength={255}
+			/>
 			<FormInputWithError
 				placeholder="Price "
 				icon="attach-money"
 				keyboardType="decimal-pad"
 				name="price"
 			/>
-			<CategoryPicker
-				selectedItem={category}
-				onSelectItem={(category) => setCategory(category)}
+			<PickerWithError
 				placeholder="Category "
 				icon="apps"
 				categories={categories}
@@ -53,6 +54,8 @@ const NewListingScreen = () => {
 				placeholder="Description "
 				icon="subtitles"
 				name="description"
+				multiline
+				numberOfLines={5}
 			/>
 			<FormInputWithError
 				placeholder="Location "

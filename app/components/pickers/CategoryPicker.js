@@ -31,7 +31,7 @@ const CategoryPicker = ({
 						{icon && (
 							<MaterialIcons name={icon} size={25} style={styles.icon} />
 						)}
-						<ParagraphText>
+						<ParagraphText style={{ fontSize: 18 }}>
 							{selectedItem ? selectedItem.label : placeholder}
 						</ParagraphText>
 					</View>
