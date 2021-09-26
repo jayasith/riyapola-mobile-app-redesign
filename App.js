@@ -27,7 +27,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<Changepassword/>
+				<NewListingScreen />
 			</>
 		);
 	} else {

@@ -57,6 +57,7 @@ const CategoryPicker = ({
 							onPress={() => {
 								setShow(false);
 								onSelectItem(item);
+								console.log(item);
 							}}
 						/>
 					)}
