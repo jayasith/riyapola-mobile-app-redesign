@@ -18,6 +18,8 @@ import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
+import navigationThemeConfig from "./app/config/navigation.theme.config";
+
 const getFonts = () =>
 	Font.loadAsync({
 		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
@@ -30,7 +32,7 @@ export default function App({ navigation }) {
 
 	if (fontLoaded) {
 		return (
-			<NavigationContainer>
+			<NavigationContainer theme={navigationThemeConfig}>
 				<AuthNavigator />
 			</NavigationContainer>
 		);
