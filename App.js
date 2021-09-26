@@ -4,6 +4,7 @@ import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import AppNavigator from "./app/navigation/AppNavigator";
 import ChangeEmail from "./app/screens/ChangeEmail";
 import Changepassword from "./app/screens/Changepassword";
 import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
@@ -33,7 +34,7 @@ export default function App({ navigation }) {
 	if (fontLoaded) {
 		return (
 			<NavigationContainer theme={navigationThemeConfig}>
-				<AuthNavigator />
+				<AppNavigator />
 			</NavigationContainer>
 		);
 	} else {
