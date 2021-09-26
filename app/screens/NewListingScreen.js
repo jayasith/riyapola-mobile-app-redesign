@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
+import ImagePickerWithError from "../components/pickers/ImagePickerWithError";
 import PickerWithError from "../components/pickers/PickerWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
@@ -15,8 +16,10 @@ import colors from "../config/colors";
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label("Title"),
 	price: Yup.number().required().min(1).label("Price"),
+	category: Yup.object().required().nullable().label("Category"),
 	description: Yup.string().required().label("Description"),
-	location: Yup.string().required().nullable().label("Location"),
+	city: Yup.string().required().min(1).label("City"),
+	images: Yup.array().required().min(1, "Please select at least one image"),
 });
 
 const NewListingScreen = () => {
@@ -27,17 +30,19 @@ const NewListingScreen = () => {
 				price: "",
 				category: null,
 				description: "",
-				location: "",
+				city: "",
+				images: [],
 			}}
 			onSubmit={(values) => console.log(values)}
 			validationSchema={validationSchema}
 		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<TitleText style={styles.title}>New Listing</TitleText>
+			<ImagePickerWithError name="images" />
 			<FormInputWithError
 				placeholder="Title "
 				icon="create"
-				name="email"
+				name="title"
 				maxLength={255}
 			/>
 			<FormInputWithError
@@ -47,6 +52,7 @@ const NewListingScreen = () => {
 				name="price"
 			/>
 			<PickerWithError
+				name="category"
 				placeholder="Category "
 				icon="apps"
 				items={categories}
@@ -60,11 +66,7 @@ const NewListingScreen = () => {
 				multiline
 				numberOfLines={5}
 			/>
-			<FormInputWithError
-				placeholder="Location "
-				icon="location-on"
-				name="location"
-			/>
+			<FormInputWithError placeholder="City " icon="location-on" name="city" />
 			<SubmitButton title="Save" style={{ width: "90%", top: 20 }} />
 		</Form>
 	);
