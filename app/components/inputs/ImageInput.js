@@ -11,7 +11,7 @@ import * as ImagePicker from "expo-image-picker";
 
 import colors from "../../config/colors";
 
-const ImageInput = ({ imageURI, onChangeImage }) => {
+const ImageInput = ({ imageUri, onChangeImage }) => {
 	const requestPermission = async () => {
 		try {
 			const { granted } = await ImagePicker.requestCameraPermissionsAsync();
@@ -25,17 +25,13 @@ const ImageInput = ({ imageURI, onChangeImage }) => {
 	};
 
 	const handlePress = () => {
-		if (!imageURI) selectImage();
+		if (!imageUri) selectImage();
 		else
 			Alert.alert("Delete", "Are you sure you want to delete this image?", [
 				{ text: "Yes", onPress: () => onChangeImage(null) },
 				{ text: "No" },
 			]);
 	};
-
-	useEffect(() => {
-		requestPermission();
-	}, []);
 
 	const selectImage = async () => {
 		try {
@@ -48,22 +44,25 @@ const ImageInput = ({ imageURI, onChangeImage }) => {
 				onChangeImage(res.uri);
 			}
 		} catch (err) {
-			console.log("Error when reading an image");
+			console.log(err);
 		}
 	};
+
+	useEffect(() => {
+		requestPermission();
+	}, []);
 
 	return (
 		<TouchableWithoutFeedback onPress={handlePress}>
 			<View style={styles.container}>
-				{!imageURI ? (
+				{!imageUri && (
 					<MaterialCommunityIcons
 						color={colors.textPrimary}
 						name="camera"
 						size={25}
 					/>
-				) : (
-					<Image source={{ uri: imageURI }} style={styles.image} />
 				)}
+				{imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
 			</View>
 		</TouchableWithoutFeedback>
 	);
@@ -74,10 +73,10 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.secondary,
 		alignItems: "center",
 		justifyContent: "center",
-		borderRadius: 15,
+		borderRadius: 10,
 		height: 100,
 		width: 100,
-		padding: 20,
+		marginRight: 10,
 		overflow: "hidden",
 	},
 	image: {

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
-import ImageInput from "../components/inputs/ImageInput";
+import ImageInputList from "../components/inputs/ImageInputList";
 import PickerWithError from "../components/pickers/PickerWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
@@ -21,7 +21,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const NewListingScreen = () => {
-	const [imageURI, setImageURI] = useState("");
+	const [imageUris, setImageUris] = useState([]);
+
+	const handleAdd = (uri) => {
+		setImageUris([...imageUris, uri]);
+	};
+
+	const handleRemove = (uri) => {
+		setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+	};
 
 	return (
 		<Form
@@ -37,9 +45,10 @@ const NewListingScreen = () => {
 		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<TitleText style={styles.title}>New Listing</TitleText>
-			<ImageInput
-				imageURI={imageURI}
-				onChangeImage={(uri) => setImageURI(uri)}
+			<ImageInputList
+				imageUris={imageUris}
+				onAddImage={(uri) => handleAdd(uri)}
+				onRemoveImage={(uri) => handleRemove(uri)}
 			/>
 			<FormInputWithError
 				placeholder="Title "
