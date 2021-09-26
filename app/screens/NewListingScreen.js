@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
+import ImageInput from "../components/inputs/ImageInput";
 import PickerWithError from "../components/pickers/PickerWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
@@ -20,6 +21,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const NewListingScreen = () => {
+	const [imageURI, setImageURI] = useState("");
+
 	return (
 		<Form
 			initialValues={{
@@ -34,6 +37,10 @@ const NewListingScreen = () => {
 		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<TitleText style={styles.title}>New Listing</TitleText>
+			<ImageInput
+				imageURI={imageURI}
+				onChangeImage={(uri) => setImageURI(uri)}
+			/>
 			<FormInputWithError
 				placeholder="Title "
 				icon="create"

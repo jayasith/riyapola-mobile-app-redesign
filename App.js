@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import LoginScreen from "./app/screens/LoginScreen";
-import SignupScreen from "./app/screens/SignupScreen";
+
+import ChangeEmail from "./app/screens/ChangeEmail";
+import Changepassword from "./app/screens/Changepassword";
 import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
+import LoadingScreen from "./app/screens/LoadingScreen";
+import LoginScreen from "./app/screens/LoginScreen";
 import NewListingScreen from "./app/screens/NewListingScreen";
 import PersonalData from "./app/screens/Personaldata";
-import Changepassword from "./app/screens/Changepassword";
-import ChangeEmail from "./app/screens/ChangeEmail";
+import SignupScreen from "./app/screens/SignupScreen";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 const getFonts = () =>
 	Font.loadAsync({
