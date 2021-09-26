@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
 import Form from "../components/forms/Form";
 import FormInputWithError from "../components/inputs/FormInputWithError";
-import ImageInputList from "../components/inputs/ImageInputList";
+import ImagePickerWithError from "../components/pickers/ImagePickerWithError";
 import PickerWithError from "../components/pickers/PickerWithError";
 import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
 
 import categories from "../config/categories";
 import colors from "../config/colors";
-import ImagePickerWithError from "../components/pickers/ImagePickerWithError";
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label("Title"),
 	price: Yup.number().required().min(1).label("Price"),
-	category: Yup.string().required().nullable().label("Category"),
+	category: Yup.object().required().nullable().label("Category"),
 	description: Yup.string().required().label("Description"),
-	location: Yup.string().required().nullable().label("Location"),
+	city: Yup.string().required().min(1).label("City"),
 	images: Yup.array().required().min(1, "Please select at least one image"),
 });
 
@@ -31,7 +30,7 @@ const NewListingScreen = () => {
 				price: "",
 				category: null,
 				description: "",
-				location: "",
+				city: "",
 				images: [],
 			}}
 			onSubmit={(values) => console.log(values)}
@@ -66,13 +65,8 @@ const NewListingScreen = () => {
 				name="description"
 				multiline
 				numberOfLines={5}
-				style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
 			/>
-			<FormInputWithError
-				placeholder="Location "
-				icon="location-on"
-				name="location"
-			/>
+			<FormInputWithError placeholder="City " icon="location-on" name="city" />
 			<SubmitButton title="Save" style={{ width: "90%", top: 20 }} />
 		</Form>
 	);
