@@ -3,13 +3,13 @@ import { View, Text, StyleSheet,Image } from 'react-native'
 import colors from '../../config/colors'
 
 
-const SearchCard = ({price, date, itemName, sellerName, imageUrl,buttom}) => {
+const SearchCard = ({price, date, itemName, sellerName, imageUrl, style}) => {
     return (
         <View style={styles.cardView}>
                     
                     
                     <View style={styles.cardImage}>
-                        <Image style={styles.image} source={imageUrl} />
+                        <Image style={[styles.image, style]} source={imageUrl} />
                     </View>
                     <View style={styles.priceView}>
 					    <Text style={styles.priceText}>Rs. {price}</Text>

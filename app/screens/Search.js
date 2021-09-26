@@ -25,23 +25,21 @@ const Search = () => {
                 </View>
                 
             </View>
-            <View style={styles.cardView}>
-                    <View style={styles.cardImage01}>
-                        <Image style={styles.image01} source={require("../assets/images/Range_Rover.jpg")} />
-                    </View>
-                    <View style={styles.priceView}>
-					    <Text style={styles.priceText}>Rs. 5000000</Text>
-				    </View>
-                    <Text style={styles.nameText}>Ford Mustang (2021)</Text>
-                    <Text style={styles.dateText}>{new Date().toDateString()}</Text>
-                    <Text style={styles.sellerText}>Chamindu Jayasith</Text>
-                </View>
+                <SearchCard
+                price={"90000000"} 
+                date={new Date().toDateString()} 
+                itemName={"Range Rover Sport"} 
+                sellerName={"Chamindu Jayasith"} 
+                imageUrl={require("../assets/images/Range_Rover.jpg")}
+                style={{width: "100%", resizeMode: 'contain', bottom:282}}
+                />
                 <SearchCard
                 price={"50000000"} 
                 date={new Date().toDateString()} 
                 itemName={"Ford Mustang (2021)"} 
                 sellerName={"Chamindu Jayasith"} 
                 imageUrl={require("../assets/images/Ford_Mustang_2021.jpg")}
+                style={{width: "100%", resizeMode: 'contain', bottom:170}}
                 />
 
         </View>
