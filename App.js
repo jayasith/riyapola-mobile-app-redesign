@@ -11,6 +11,8 @@ import NewListingScreen from "./app/screens/NewListingScreen";
 import PersonalData from "./app/screens/Personaldata";
 import Changepassword from "./app/screens/Changepassword";
 import ChangeEmail from "./app/screens/ChangeEmail";
+import SearchFilter from "./app/screens/SearchFilter";
+import Search from "./app/screens/Search";
 
 const getFonts = () =>
 	Font.loadAsync({
