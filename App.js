@@ -8,7 +8,8 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import LoadingScreen from "./app/screens/LoadingScreen";
 import HomeScreen from "./app/screens/HomeScreen";
 import NewListingScreen from "./app/screens/NewListingScreen";
-
+import SettingsScreen from "./app/screens/SettingsScreen";
+import NotificationScreen from "./app/screens/NotificationScreen";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -23,7 +24,9 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<NewListingScreen />
+				{/* <NewListingScreen /> */}
+        {/* <SettingsScreen/> */}
+        <NotificationScreen/>
 			</>
 		);
 	} else {
