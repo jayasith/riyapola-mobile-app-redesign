@@ -13,6 +13,8 @@ import Changepassword from "./app/screens/Changepassword";
 import ChangeEmail from "./app/screens/ChangeEmail";
 import SearchFilter from "./app/screens/SearchFilter";
 import Search from "./app/screens/Search";
+import SingleItem from "./app/screens/SingleItem";
+
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -27,7 +29,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<NewListingScreen />
+				<SingleItem />
 			</>
 		);
 	} else {
