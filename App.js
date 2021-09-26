@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { NavigationContainer } from "@react-navigation/native";
 
+import AuthNavigator from "./app/navigation/AuthNavigator";
 import ChangeEmail from "./app/screens/ChangeEmail";
 import Changepassword from "./app/screens/Changepassword";
 import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
@@ -23,14 +25,14 @@ const getFonts = () =>
 		"poppins-bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
 	});
 
-export default function App() {
+export default function App({ navigation }) {
 	const [fontLoaded, setFontLoaded] = useState(false);
 
 	if (fontLoaded) {
 		return (
-			<>
-				<NewListingScreen />
-			</>
+			<NavigationContainer>
+				<AuthNavigator />
+			</NavigationContainer>
 		);
 	} else {
 		return (
