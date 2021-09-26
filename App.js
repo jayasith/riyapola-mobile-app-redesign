@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import { NavigationContainer } from "@react-navigation/native";
 
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import AppNavigator from "./app/navigation/AppNavigator";
 import ChangeEmail from "./app/screens/ChangeEmail";
 import Changepassword from "./app/screens/Changepassword";
 import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
@@ -16,6 +19,8 @@ import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
+import navigationThemeConfig from "./app/config/navigation.theme.config";
+
 const getFonts = () =>
 	Font.loadAsync({
 		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
@@ -23,14 +28,14 @@ const getFonts = () =>
 		"poppins-bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
 	});
 
-export default function App() {
+export default function App({ navigation }) {
 	const [fontLoaded, setFontLoaded] = useState(false);
 
 	if (fontLoaded) {
 		return (
-			<>
-				<NewListingScreen />
-			</>
+			<NavigationContainer theme={navigationThemeConfig}>
+				<AppNavigator />
+			</NavigationContainer>
 		);
 	} else {
 		return (

@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
 import Card from "../components/cards/Card";
+import { ScrollView } from "react-native-gesture-handler";
 
 const WelcomeScreen = () => {
 	return (
@@ -18,30 +19,40 @@ const WelcomeScreen = () => {
 				/>
 				<Feather name="search" size={30} />
 			</View>
-			<View style={styles.categories}>
-				<CategoryButton title="Vehicles" />
-				<CategoryButton title="Electronics" />
-				<CategoryButton title="Property" />
-				<CategoryButton title="Education" />
+			<View>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+					<View style={styles.categories}>
+						<CategoryButton title="Vehicles" />
+						<CategoryButton title="Electronics" />
+						<CategoryButton title="Property" />
+						<CategoryButton title="Furniture" />
+						<CategoryButton title="Sports" />
+						<CategoryButton title="Clothing" />
+					</View>
+				</ScrollView>
 			</View>
 			<View style={{ paddingLeft: 25, paddingVertical: 30 }}>
 				<SubtitleText>Latest Listings</SubtitleText>
 			</View>
-			<View style={styles.cardsContainer}>
-				<Card
-					image={require("../assets/images/mustang-1969.png")}
-					title="Ford Mustang 1969"
-					price="50000.00"
-					seller="Thushara"
-					date={new Date().toDateString()}
-				/>
-				<Card
-					image={require("../assets/images/rs6.png")}
-					title="Audi RS6 Avant"
-					price="50000.00"
-					seller="Thushara"
-					date={new Date().toDateString()}
-				/>
+			<View>
+				<ScrollView>
+					<View style={styles.cardsContainer}>
+						<Card
+							image={require("../assets/images/mustang-1969.png")}
+							title="Ford Mustang 1969"
+							price="50000.00"
+							seller="Thushara"
+							date={new Date().toDateString()}
+						/>
+						<Card
+							image={require("../assets/images/rs6.png")}
+							title="Audi RS6 Avant"
+							price="50000.00"
+							seller="Thushara"
+							date={new Date().toDateString()}
+						/>
+					</View>
+				</ScrollView>
 			</View>
 		</View>
 	);
@@ -56,7 +67,7 @@ const styles = StyleSheet.create({
 	},
 
 	categories: {
-		top: -50,
+		top: -60,
 		paddingLeft: 20,
 		flexDirection: "row",
 		alignItems: "flex-start",
