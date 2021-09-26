@@ -10,13 +10,11 @@ import LoadingScreen from "./app/screens/LoadingScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import NewListingScreen from "./app/screens/NewListingScreen";
 import PersonalData from "./app/screens/Personaldata";
-import SignupScreen from "./app/screens/SignupScreen";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-import Changepassword from "./app/screens/Changepassword";
-import ChangeEmail from "./app/screens/ChangeEmail";
-import SearchFilter from "./app/screens/SearchFilter";
 import Search from "./app/screens/Search";
+import SearchFilter from "./app/screens/SearchFilter";
+import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -31,7 +29,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<SingleItem />
+				<NewListingScreen />
 			</>
 		);
 	} else {
