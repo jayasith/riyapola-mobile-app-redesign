@@ -75,6 +75,7 @@ const NewListingScreen = () => {
 				name="description"
 				multiline
 				numberOfLines={5}
+				style={{ alignItems: "flex-start", justifyContent: "flex-start" }}
 			/>
 			<FormInputWithError
 				placeholder="Location "

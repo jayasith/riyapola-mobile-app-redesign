@@ -4,11 +4,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import colors from "../../config/colors";
 
-const TextInputWithIcon = ({ icon, ...others }) => {
+const TextInputWithIcon = ({ icon, style, ...other }) => {
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, style]}>
 			{icon && <MaterialIcons name={icon} size={25} style={styles.icon} />}
-			<TextInput {...others} style={styles.text} />
+			<TextInput {...other} style={styles.text} />
 		</View>
 	);
 };
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: colors.secondary,
 		flexDirection: "row",
+		alignItems: "center",
 		marginHorizontal: 25,
 		paddingVertical: 10,
 		paddingHorizontal: 15,
