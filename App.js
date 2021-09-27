@@ -11,7 +11,7 @@ import NewListingScreen from "./app/screens/NewListingScreen";
 import PersonalData from "./app/screens/Personaldata";
 import Changepassword from "./app/screens/Changepassword";
 import ChangeEmail from "./app/screens/ChangeEmail";
-
+import ProfileScreen from "./app/screens/ProfileScreen";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -26,7 +26,7 @@ export default function App() {
 	if (fontLoaded) {
 		return (
 			<>
-				<Changepassword/>
+				<ProfileScreen />
 			</>
 		);
 	} else {
