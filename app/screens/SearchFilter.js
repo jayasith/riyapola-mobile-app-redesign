@@ -12,14 +12,13 @@ import Checkbox from '../components/checkbox/checkbox';
 const SearchFilter = () => {
 
     var radio_props = [
-  {label: 'param1', value: 0 },
-  {label: 'param2', value: 1 },
-  {label: 'param3', value: 2 },
-  {label: 'param4', value: 3 }
+{label: 'param1', value: 0 },
+{label: 'param2', value: 1 },
+{label: 'param3', value: 2 },
+{label: 'param4', value: 3 }
 ];
 
-  const [current, setCurrent] = useState(0);
- 
+const [current, setCurrent] = useState(0);
 
         return (
             <View style={styles.background}>
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
         width:50
     },
     locationRaw:{
-        
+
     }
 
 })
