@@ -9,6 +9,8 @@ import {
 
 import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import Search from "../screens/Search";
 
 import routes from "./routes";
 
@@ -30,8 +32,8 @@ const AppNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={routes.ALL_LISTINGS}
-				component={NewListingScreen}
+				name={"All Listings"}
+				component={Search}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Entypo color={color} size={30} name="list" />
@@ -72,7 +74,7 @@ const AppNavigator = () => {
 			/>
 			<Tab.Screen
 				name={routes.PROFILE}
-				component={NewListingScreen}
+				component={ProfileScreen}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Feather color={color} size={30} name="user" />

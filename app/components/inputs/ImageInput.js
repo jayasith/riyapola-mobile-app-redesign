@@ -1,87 +1,51 @@
-import React, { useEffect } from "react";
-import {
-	StyleSheet,
-	View,
-	Image,
-	TouchableWithoutFeedback,
-	Alert,
-} from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
-
+import { IconButton, Colors } from "react-native-paper";
+import React, { useState } from "react";
+import { View, Image, StyleSheet } from "react-native";
 import colors from "../../config/colors";
 
-const ImageInput = ({ imageUri, onChangeImage }) => {
-	const requestPermission = async () => {
-		try {
-			const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-
-			if (!granted) {
-				alert("You need to enable permissions to access the library.");
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const handlePress = () => {
-		if (!imageUri) selectImage();
-		else
-			Alert.alert("Delete", "Are you sure you want to delete this image?", [
-				{ text: "Yes", onPress: () => onChangeImage(null) },
-				{ text: "No" },
-			]);
-	};
-
-	const selectImage = async () => {
-		try {
-			const res = await ImagePicker.launchImageLibraryAsync({
-				mediaTypes: ImagePicker.MediaTypeOptions.Images,
-				quality: 0.5,
-			});
-
-			if (!res.cancelled) {
-				onChangeImage(res.uri);
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	useEffect(() => {
-		requestPermission();
-	}, []);
-
+ImageInput = () => {
 	return (
-		<TouchableWithoutFeedback onPress={handlePress}>
-			<View style={styles.container}>
-				{!imageUri && (
-					<MaterialCommunityIcons
-						color={colors.textPrimary}
-						name="camera"
-						size={25}
-					/>
-				)}
-				{imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
-			</View>
-		</TouchableWithoutFeedback>
+		<View>
+			<Image
+				source={require("../../assets/images/icon.png")}
+				style={style.image}
+			/>
+			<IconButton
+				icon="camera-plus"
+				color={Colors.grey600}
+				style={style.cam}
+				size={36}
+				onPress={() => console.log("Pressed")}
+			/>
+
+			<View></View>
+		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		backgroundColor: colors.secondary,
-		alignItems: "center",
-		justifyContent: "center",
-		borderRadius: 10,
-		height: 100,
-		width: 100,
-		marginRight: 10,
-		overflow: "hidden",
-	},
+const style = StyleSheet.create({
 	image: {
-		width: 100,
-		height: 100,
+		marginTop: 20,
+		width: 140,
+		height: 140,
+		borderRadius: 10,
+		marginLeft: 135,
+		position: "absolute",
+		marginBottom: 50,
+	},
+	container: {
+		flexDirection: "row",
+		marginHorizontal: 150,
+		backgroundColor: colors.primary,
+		paddingVertical: 0,
+		paddingHorizontal: 60,
+		height: 110,
+		borderRadius: 10,
+		overflow: "hidden",
+		marginBottom: 0,
+	},
+	cam: {
+		marginLeft: 240,
+		marginTop: 125,
 	},
 });
 
