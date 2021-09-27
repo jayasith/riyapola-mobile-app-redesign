@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { color } from "react-native-reanimated";
 
 import colors from "../../config/colors";
 import ParagraphText from "../texts/ParagraphText";
@@ -10,7 +11,9 @@ const Card = ({ title, date, image, seller, price }) => {
 		<TouchableOpacity style={styles.cardContainer}>
 			<View>
 				<View style={styles.price}>
-					<ParagraphText>Rs. {price}</ParagraphText>
+					<ParagraphText style={{ color: colors.textPrimary }}>
+						Rs. {price}
+					</ParagraphText>
 				</View>
 				<Image source={image} style={styles.image} />
 			</View>
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
 	price: {
 		position: "absolute",
 		elevation: 1,
-		backgroundColor: "rgba(255,255,255, 1)	",
+		backgroundColor: "rgba(255,255,255, .4)	",
 		top: 12,
 		left: 10,
 		paddingVertical: 2,
