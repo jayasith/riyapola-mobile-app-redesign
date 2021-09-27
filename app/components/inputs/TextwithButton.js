@@ -4,43 +4,59 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import { IconButton, Colors } from "react-native-paper";
 
-TextWithButton = ({ icon, title }) => {
+TextWithButton = ({ icon, title, link }) => {
 	return (
 		<View style={styles.container}>
-			<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
-			<Text style={styles.text}>{title}</Text>
+			<View style={styles.container1}>
+				<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
+				<Text style={styles.text}>{title}</Text>
+			</View>
 			<IconButton
-				name="chevron-right"
+				style={styles.icon1}
+				icon="chevron-right"
 				color={Colors.gray200}
 				size={24}
-				style={styles.icon}
+				onPress={() => console.log("arrow")}
 			/>
 		</View>
 	);
 };
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: colors.secondary,
 		flexDirection: "row",
-		marginHorizontal: 38,
+		marginHorizontal: 24,
 		paddingVertical: 1,
 		paddingHorizontal: 15,
 		borderRadius: 10,
 		overflow: "hidden",
 		marginBottom: 15,
 		marginTop: 15,
+		justifyContent: "space-between",
+	},
+	container1: {
+		flexDirection: "row",
 	},
 	icon: {
 		color: colors.textPrimary,
 		marginRight: 10,
 		marginTop: 10,
+		padding: 8,
+		backgroundColor: colors.secondary,
+		borderRadius: 10,
+	},
+	icon1: {
+		color: colors.textPrimary,
+		marginRight: 10,
+		marginTop: 10,
+		padding: 8,
+		borderRadius: 10,
 	},
 	text: {
 		color: colors.textPrimary,
 		fontSize: 15,
 		marginLeft: 10,
-		width: "85%",
-		marginTop: 13,
+
+		marginTop: 17,
 	},
 });
 

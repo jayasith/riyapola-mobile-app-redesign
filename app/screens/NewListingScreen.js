@@ -1,34 +1,74 @@
-import React, { useState } from "react";
-import { View, StatusBar, StyleSheet } from "react-native";
-import PrimaryButton from "../components/buttons/PrimaryButton";
+import React from "react";
+import { StatusBar, StyleSheet } from "react-native";
+import * as Yup from "yup";
 
-import TextInputWithIcon from "../components/inputs/TextInputWithIcon";
-import CategoryPicker from "../components/pickers/CategoryPicker";
+import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
+import Form from "../components/forms/Form";
+import FormInputWithError from "../components/inputs/FormInputWithError";
+import ImagePickerWithError from "../components/pickers/ImagePickerWithError";
+import PickerWithError from "../components/pickers/PickerWithError";
+import SubmitButton from "../components/buttons/SubmitButton";
 import TitleText from "../components/texts/TitleText";
 
-import colors from "../config/colors";
 import categories from "../config/categories";
+import colors from "../config/colors";
+
+const validationSchema = Yup.object().shape({
+	title: Yup.string().required().min(1).label("Title"),
+	price: Yup.number().required().min(1).label("Price"),
+	category: Yup.object().required().nullable().label("Category"),
+	description: Yup.string().required().label("Description"),
+	city: Yup.string().required().min(1).label("City"),
+	images: Yup.array().required().min(1, "Please select at least one image"),
+});
 
 const NewListingScreen = () => {
-	const [category, setCategory] = useState(categories[0]);
-
 	return (
-		<View>
+		<Form
+			initialValues={{
+				title: "",
+				price: "",
+				category: null,
+				description: "",
+				city: "",
+				images: [],
+			}}
+			onSubmit={(values) => console.log(values)}
+			validationSchema={validationSchema}
+		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
 			<TitleText style={styles.title}>New Listing</TitleText>
-			<TextInputWithIcon placeholder="Title " icon="create" />
-			<TextInputWithIcon placeholder="Price " icon="attach-money" />
-			<CategoryPicker
-				selectedItem={category}
-				onSelectItem={(category) => setCategory(category)}
+			<ImagePickerWithError name="images" />
+			<FormInputWithError
+				placeholder="Title "
+				icon="create"
+				name="title"
+				maxLength={255}
+			/>
+			<FormInputWithError
+				placeholder="Price "
+				icon="attach-money"
+				keyboardType="decimal-pad"
+				name="price"
+			/>
+			<PickerWithError
+				name="category"
 				placeholder="Category "
 				icon="apps"
-				categories={categories}
+				items={categories}
+				numberOfColumns={3}
+				PickerItemComponent={CategoryPickerItem}
 			/>
-			<TextInputWithIcon placeholder="Description " icon="subtitles" />
-			<TextInputWithIcon placeholder="Location " icon="location-on" />
-			<PrimaryButton title="Save" style={{ width: "90%", top: 20 }} />
-		</View>
+			<FormInputWithError
+				placeholder="Description "
+				icon="subtitles"
+				name="description"
+				multiline
+				numberOfLines={5}
+			/>
+			<FormInputWithError placeholder="City " icon="location-on" name="city" />
+			<SubmitButton title="Save" style={{ width: "90%", top: 20 }} />
+		</Form>
 	);
 };
 

@@ -49,12 +49,13 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flexDirection: "row",
-		marginHorizontal: 50,
+		marginHorizontal: 36,
 		marginTop: 50,
+		marginBottom: 20,
 	},
 	line: {
 		borderBottomColor: "#9fa098",
-		borderBottomWidth: 2,
+		borderBottomWidth: 0.7,
 		flexDirection: "row",
 		marginHorizontal: 40,
 
