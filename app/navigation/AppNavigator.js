@@ -10,54 +10,76 @@ import {
 import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
 
+import routes from "./routes";
+
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
-				name={"Home"}
+				name={routes.HOME}
 				component={HomeScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => (
-						<Feather color={color} size={size} name="home" />
+					tabBarIcon: ({ color }) => (
+						<Feather color={color} size={30} name="home" />
 					),
+					tabBarLabel: () => {
+						return null;
+					},
 				}}
 			/>
 			<Tab.Screen
-				name={"All Listings"}
+				name={routes.ALL_LISTINGS}
 				component={NewListingScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => (
-						<Entypo color={color} size={size} name="list" />
+					tabBarIcon: ({ color }) => (
+						<Entypo color={color} size={30} name="list" />
 					),
+					tabBarLabel: () => {
+						return null;
+					},
 				}}
 			/>
 			<Tab.Screen
-				name={"New Listing"}
+				name={routes.NEW_LISTING}
 				component={NewListingScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => (
-						<Feather color={color} size={size} name="plus-square" />
+					tabBarIcon: ({ color }) => (
+						<Feather
+							color={color}
+							size={30}
+							name="plus-square"
+							style={{ marginVertical: 30 }}
+						/>
 					),
+					tabBarLabel: () => {
+						return null;
+					},
 				}}
 			/>
 			<Tab.Screen
-				name={"Notifications"}
+				name={routes.NOTIFICATIONS}
 				component={NewListingScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => (
-						<Ionicons color={color} size={size} name="notifications-outline" />
+					tabBarIcon: ({ color }) => (
+						<Feather color={color} size={30} name="bell" />
 					),
+					tabBarLabel: () => {
+						return null;
+					},
 				}}
 			/>
 			<Tab.Screen
-				name={"Profile"}
+				name={routes.PROFILE}
 				component={NewListingScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => (
-						<Feather color={color} size={size} name="user" />
+					tabBarIcon: ({ color }) => (
+						<Feather color={color} size={30} name="user" />
 					),
+					tabBarLabel: () => {
+						return null;
+					},
 				}}
 			/>
 		</Tab.Navigator>
