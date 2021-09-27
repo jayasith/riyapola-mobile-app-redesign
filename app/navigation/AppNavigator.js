@@ -9,6 +9,7 @@ import {
 
 import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
+import Search from "../screens/Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ const AppNavigator = () => {
 			/>
 			<Tab.Screen
 				name={"All Listings"}
-				component={NewListingScreen}
+				component={Search}
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<Entypo color={color} size={size} name="list" />
