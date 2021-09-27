@@ -20,4 +20,22 @@ export default [
 		backgroundColor: colors.primary,
 		icon: "book-outline",
 	},
+	{
+		label: "Furniture",
+		value: 4,
+		backgroundColor: colors.primary,
+		icon: "floor-lamp",
+	},
+	{
+		label: "Sports",
+		value: 4,
+		backgroundColor: colors.primary,
+		icon: "bike",
+	},
+	{
+		label: "Clothing",
+		value: 4,
+		backgroundColor: colors.primary,
+		icon: "shoe-formal",
+	},
 ];

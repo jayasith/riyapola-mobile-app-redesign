@@ -33,9 +33,17 @@ const CategoryPicker = ({
 						{icon && (
 							<MaterialIcons name={icon} size={25} style={styles.icon} />
 						)}
-						<ParagraphText style={{ fontSize: 18 }}>
-							{selectedItem ? selectedItem.label : placeholder}
-						</ParagraphText>
+						{!selectedItem ? (
+							<ParagraphText style={{ fontSize: 18 }}>
+								{placeholder}
+							</ParagraphText>
+						) : (
+							<ParagraphText
+								style={{ fontSize: 18, color: colors.textPrimary }}
+							>
+								{selectedItem.label}
+							</ParagraphText>
+						)}
 					</View>
 					<MaterialIcons
 						name="keyboard-arrow-down"
