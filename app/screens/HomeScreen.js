@@ -31,29 +31,51 @@ const WelcomeScreen = () => {
 					</View>
 				</ScrollView>
 			</View>
-			<View style={{ paddingLeft: 25, paddingVertical: 30 }}>
+			<View style={{ paddingLeft: 25, paddingVertical: 30, paddingBottom: 10 }}>
 				<SubtitleText>Latest Listings</SubtitleText>
 			</View>
-			<View>
-				<ScrollView>
-					<View style={styles.cardsContainer}>
-						<Card
-							image={require("../assets/images/mustang-1969.png")}
-							title="Ford Mustang 1969"
-							price="50000.00"
-							seller="Thushara"
-							date={new Date().toDateString()}
-						/>
-						<Card
-							image={require("../assets/images/rs6.png")}
-							title="Audi RS6 Avant"
-							price="50000.00"
-							seller="Thushara"
-							date={new Date().toDateString()}
-						/>
-					</View>
-				</ScrollView>
-			</View>
+			<ScrollView
+				showsVerticalScrollIndicator={false}
+				decelerationRate={"normal"}
+			>
+				<View style={styles.cardsContainer}>
+					<Card
+						image={require("../assets/images/mustang-1969.png")}
+						title="Ford Mustang 1969"
+						price="50000.00"
+						seller="Thushara"
+						date={new Date().toDateString()}
+					/>
+					<Card
+						image={require("../assets/images/rs6.png")}
+						title="Audi RS6 Avant"
+						price="50000.00"
+						seller="Thushara"
+						date={new Date().toDateString()}
+					/>
+					<Card
+						image={require("../assets/images/rs6.png")}
+						title="Audi RS6 Avant"
+						price="50000.00"
+						seller="Thushara"
+						date={new Date().toDateString()}
+					/>
+					<Card
+						image={require("../assets/images/rs6.png")}
+						title="Audi RS6 Avant"
+						price="50000.00"
+						seller="Thushara"
+						date={new Date().toDateString()}
+					/>
+					<Card
+						image={require("../assets/images/rs6.png")}
+						title="Audi RS6 Avant"
+						price="50000.00"
+						seller="Thushara"
+						date={new Date().toDateString()}
+					/>
+				</View>
+			</ScrollView>
 		</View>
 	);
 };
@@ -84,6 +106,7 @@ const styles = StyleSheet.create({
 	cardsContainer: {
 		paddingHorizontal: 30,
 		width: "100%",
+		marginBottom: 200,
 	},
 });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, StyleSheet } from "react-native";
+import { ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 
 import CategoryPickerItem from "../components/pickers/CategoryPickerItem";
@@ -37,37 +37,48 @@ const NewListingScreen = () => {
 			validationSchema={validationSchema}
 		>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-			<TitleText style={styles.title}>New Listing</TitleText>
-			<ImagePickerWithError name="images" />
-			<FormInputWithError
-				placeholder="Title "
-				icon="create"
-				name="title"
-				maxLength={255}
-			/>
-			<FormInputWithError
-				placeholder="Price "
-				icon="attach-money"
-				keyboardType="decimal-pad"
-				name="price"
-			/>
-			<PickerWithError
-				name="category"
-				placeholder="Category "
-				icon="apps"
-				items={categories}
-				numberOfColumns={3}
-				PickerItemComponent={CategoryPickerItem}
-			/>
-			<FormInputWithError
-				placeholder="Description "
-				icon="subtitles"
-				name="description"
-				multiline
-				numberOfLines={5}
-			/>
-			<FormInputWithError placeholder="City " icon="location-on" name="city" />
-			<SubmitButton title="Save" style={{ width: "90%", top: 20 }} />
+			<View style={{ flex: 1 }}>
+				<TitleText style={styles.title}>New Listing</TitleText>
+				<ScrollView showsVerticalScrollIndicator={false}>
+					<ImagePickerWithError name="images" />
+					<FormInputWithError
+						placeholder="Title "
+						icon="create"
+						name="title"
+						maxLength={255}
+					/>
+					<FormInputWithError
+						placeholder="Price "
+						icon="attach-money"
+						keyboardType="decimal-pad"
+						name="price"
+					/>
+					<PickerWithError
+						name="category"
+						placeholder="Category "
+						icon="apps"
+						items={categories}
+						numberOfColumns={3}
+						PickerItemComponent={CategoryPickerItem}
+					/>
+					<FormInputWithError
+						placeholder="Description "
+						icon="subtitles"
+						name="description"
+						multiline
+						numberOfLines={5}
+					/>
+					<FormInputWithError
+						placeholder="City "
+						icon="location-on"
+						name="city"
+					/>
+					<SubmitButton
+						title="Save"
+						style={{ width: "90%", top: 10, marginBottom: 20 }}
+					/>
+				</ScrollView>
+			</View>
 		</Form>
 	);
 };
