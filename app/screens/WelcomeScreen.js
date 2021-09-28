@@ -4,8 +4,9 @@ import { View, StyleSheet, Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
 	return (
 		<View style={styles.background}>
 			<StatusBar backgroundColor={colors.secondary} barStyle="dark-content" />
@@ -21,7 +22,7 @@ const WelcomeScreen = () => {
 			</View>
 			<PrimaryButton
 				title="Get Started"
-				onPress={() => console.log("tapped")}
+				onPress={() => navigation.navigate(routes.LOGIN)}
 			/>
 		</View>
 	);
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
 
 	logo: {
 		position: "absolute",
-		top: 80,
+		top: 50,
 		alignSelf: "center",
 		zIndex: 2,
 	},
