@@ -11,6 +11,8 @@ import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Search from "../screens/Search";
+import Notification from "../screens/NotificationScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 import routes from "./routes";
 
@@ -62,7 +64,7 @@ const AppNavigator = () => {
 			/>
 			<Tab.Screen
 				name={routes.NOTIFICATIONS}
-				component={NewListingScreen}
+				component={SettingsScreen}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Feather color={color} size={30} name="bell" />
