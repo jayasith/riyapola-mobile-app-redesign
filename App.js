@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import AppNavigator from "./app/navigation/AppNavigator";
-
 import ForgotpasswordScreen from "./app/screens/ForgotpasswordScreen";
 import HomeScreen from "./app/screens/HomeScreen";
 import LoadingScreen from "./app/screens/LoadingScreen";
@@ -20,8 +19,10 @@ import SearchFilter from "./app/screens/SearchFilter";
 import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
-
 import navigationThemeConfig from "./app/config/navigation.theme.config";
+import SettingsScreen from "./app/screens/SettingsScreen";
+import NotificationScreen from "./app/screens/NotificationScreen";
+
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -38,6 +39,7 @@ export default function App({ navigation }) {
 			<NavigationContainer theme={navigationThemeConfig}>
 				<AppNavigator />
 			</NavigationContainer>
+
 		);
 	} else {
 		return (
