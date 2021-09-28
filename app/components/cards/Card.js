@@ -15,7 +15,8 @@ const Card = ({ title, date, image, seller, price }) => {
 						Rs. {price}
 					</ParagraphText>
 				</View>
-				<Image source={image} style={styles.image} />
+				{console.log(image)}
+				<Image source={{ uri: image }} style={styles.image} />
 			</View>
 			<View style={styles.textContainer}>
 				<View>
@@ -49,6 +50,8 @@ const styles = StyleSheet.create({
 	image: {
 		width: "100%",
 		top: 0,
+		width: 400,
+		height: 150,
 	},
 
 	price: {
