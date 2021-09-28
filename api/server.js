@@ -17,7 +17,7 @@ const config = require("config");
 const app = express();
 dotenv.config();
 
-app.use(express.static("public"));
+app.use(express.static("./public"));
 app.use(express.json());
 app.use(helmet());
 app.use(compression());
@@ -34,18 +34,8 @@ app.use("/api/messages", messages);
 
 const PORT = process.env.PORT || 5000;
 
-mongoose
-	.connect(process.env.CONNECTION_URL, {
-		useUnifiedTopology: true,
-		useNewUrlParser: true,
-	})
-	.then(() => {
-		app.listen(PORT, () => {
-			console.log(`connected to mongodb and started listening on port ${PORT}`);
-		});
-	})
-	.catch((err) => {
-		console.error(err.message);
-	});
+app.listen(PORT, () => {
+	console.log(`connected to mongodb and started listening on port ${PORT}`);
+});
 
 app.get("/", (req, res) => res.send("<h3>Riyapola API</h3>"));
