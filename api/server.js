@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 const categories = require("./routes/categories");
@@ -33,8 +34,18 @@ app.use("/api/messages", messages);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-	console.log(`Server started on port ${PORT}`);
-});
+mongoose
+	.connect(process.env.CONNECTION_URL, {
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+	})
+	.then(() => {
+		app.listen(PORT, () => {
+			console.log(`connected to mongodb and started listening on port ${PORT}`);
+		});
+	})
+	.catch((err) => {
+		console.error(err.message);
+	});
 
 app.get("/", (req, res) => res.send("<h3>Riyapola API</h3>"));
