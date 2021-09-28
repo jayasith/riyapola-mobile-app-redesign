@@ -4,4 +4,5 @@ export default {
 	textPrimary: "#304756",
 	textSecondary: "#97A3AB",
 	white: "#FFF",
+	orange: "#F57350",
 };
