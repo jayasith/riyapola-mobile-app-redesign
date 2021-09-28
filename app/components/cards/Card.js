@@ -15,7 +15,6 @@ const Card = ({ title, date, image, seller, price }) => {
 						Rs. {price}
 					</ParagraphText>
 				</View>
-				{console.log(image)}
 				<Image source={{ uri: image }} style={styles.image} />
 			</View>
 			<View style={styles.textContainer}>

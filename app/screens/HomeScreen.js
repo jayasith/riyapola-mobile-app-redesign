@@ -9,19 +9,18 @@ import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
 import ParagraphText from "../components/texts/ParagraphText";
 import Card from "../components/cards/Card";
+import useFetch from "../hooks/useFetch";
 
 const WelcomeScreen = () => {
-	const [latestListings, setLatestListings] = useState([]);
+	const {
+		data: latestListings,
+		error,
+		getData: getLatestListings,
+	} = useFetch(listings.getListings);
 
 	useEffect(() => {
 		getLatestListings();
 	}, []);
-
-	const getLatestListings = async () => {
-		const res = await listings.getListings();
-		console.log(res.data);
-		setLatestListings(res.data);
-	};
 
 	return (
 		<View>
@@ -52,7 +51,7 @@ const WelcomeScreen = () => {
 				showsVerticalScrollIndicator={false}
 				decelerationRate={"normal"}
 			>
-				{latestListings.length > 0 ? (
+				{!error ? (
 					<View style={styles.cardsContainer}>
 						{latestListings.map((latestListing) => (
 							<Card
@@ -66,7 +65,9 @@ const WelcomeScreen = () => {
 						))}
 					</View>
 				) : (
-					<ParagraphText> No Latest Listings Found</ParagraphText>
+					<ParagraphText style={{ fontSize: 20, paddingHorizontal: 28 }}>
+						Something went wrong.
+					</ParagraphText>
 				)}
 			</ScrollView>
 		</View>
