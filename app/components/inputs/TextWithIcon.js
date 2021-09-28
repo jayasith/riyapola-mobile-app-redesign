@@ -1,40 +1,63 @@
+import { Touchable, View, StyleSheet, Text, Button } from "react-native";
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-
 import colors from "../../config/colors";
+import { IconButton, Colors } from "react-native-paper";
 
-const TextInputWithIcon = ({ icon , ...others}) => {
-  return (
-    <View style={styles.container}>
-      {icon && <Entypo name={icon} size={25} style={styles.icon} />}
-      <TextInput {...others} style={styles.text} />
-    </View>
-  );
+const TextInputWithIcon= ({ icon, title, link }) => {
+	return (
+		<View style={styles.container}>
+			<View style={styles.container1}>
+				<Entypo name={icon} size={25} style={styles.icon} />
+				<Text style={styles.text}>{title}</Text>
+			</View>
+			<IconButton
+				style={styles.icon1}
+				icon="chevron-right"
+				color={Colors.gray200}
+				size={24}
+				onPress={() => console.log("arrow")}
+			/>
+		</View>
+	);
 };
-
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    marginHorizontal: 25,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    overflow: "hidden",
-    marginBottom: 20,
-  },
+	container: {
+		flexDirection: "row",
+		marginHorizontal: 24,
+		paddingVertical: 1,
+		paddingHorizontal: 15,
+		borderRadius: 10,
+		overflow: "hidden",
+		marginBottom: 15,
+		marginTop: 15,
+		justifyContent: "space-between",
+	},
+	container1: {
+		flexDirection: "row",
+	},
+	icon: {
+		color: colors.textPrimary,
+		marginRight: 10,
+		marginTop: 10,
+		padding: 8,
+		backgroundColor: colors.secondary,
+		borderRadius: 10,
+	},
+	icon1: {
+		color: colors.textPrimary,
+		marginRight: 10,
+		marginTop: 10,
+		padding: 8,
+		borderRadius: 10,
+	},
+	text: {
+		color: colors.textPrimary,
+		fontSize: 15,
+		marginLeft: 10,
 
-  icon: {
-    color: colors.textPrimary,
-    marginRight: 10,
-  },
-
-  text: {
-    fontFamily: "poppins-medium",
-    fontSize: 18,
-    color: colors.textPrimary,
-    width: "100%",
-    marginRight: 20,
-  },
+		marginTop: 17,
+	},
 });
 
 export default TextInputWithIcon;
