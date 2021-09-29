@@ -1,14 +1,27 @@
-import React from "react";
-import { View, StyleSheet, Image, Text, StatusBar } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image, StatusBar, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import colors from "../config/colors";
+import listings from "../api/controllers/listings.controller";
+
 import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
+import ParagraphText from "../components/texts/ParagraphText";
 import Card from "../components/cards/Card";
-import { ScrollView } from "react-native-gesture-handler";
+import useFetch from "../hooks/useFetch";
 
 const WelcomeScreen = () => {
+	const {
+		data: latestListings,
+		error,
+		getData: getLatestListings,
+	} = useFetch(listings.getListings);
+
+	useEffect(() => {
+		getLatestListings();
+	}, []);
+
 	return (
 		<View>
 			<StatusBar backgroundColor={colors.white} barStyle="dark-content" />
@@ -38,43 +51,24 @@ const WelcomeScreen = () => {
 				showsVerticalScrollIndicator={false}
 				decelerationRate={"normal"}
 			>
-				<View style={styles.cardsContainer}>
-					<Card
-						image={require("../assets/images/mustang-1969.png")}
-						title="Ford Mustang 1969"
-						price="50000.00"
-						seller="Thushara"
-						date={new Date().toDateString()}
-					/>
-					<Card
-						image={require("../assets/images/rs6.png")}
-						title="Audi RS6 Avant"
-						price="50000.00"
-						seller="Thushara"
-						date={new Date().toDateString()}
-					/>
-					<Card
-						image={require("../assets/images/rs6.png")}
-						title="Audi RS6 Avant"
-						price="50000.00"
-						seller="Thushara"
-						date={new Date().toDateString()}
-					/>
-					<Card
-						image={require("../assets/images/rs6.png")}
-						title="Audi RS6 Avant"
-						price="50000.00"
-						seller="Thushara"
-						date={new Date().toDateString()}
-					/>
-					<Card
-						image={require("../assets/images/rs6.png")}
-						title="Audi RS6 Avant"
-						price="50000.00"
-						seller="Thushara"
-						date={new Date().toDateString()}
-					/>
-				</View>
+				{!error ? (
+					<View style={styles.cardsContainer}>
+						{latestListings.map((latestListing) => (
+							<Card
+								key={latestListing.id}
+								image={latestListing.images[0].url}
+								title={latestListing.title}
+								price={latestListing.price}
+								seller="Thushara"
+								date={new Date().toDateString()}
+							/>
+						))}
+					</View>
+				) : (
+					<ParagraphText style={{ fontSize: 20, paddingHorizontal: 28 }}>
+						Something went wrong.
+					</ParagraphText>
+				)}
 			</ScrollView>
 		</View>
 	);
