@@ -5,8 +5,7 @@ import TextInputWithIcon from "../inputs/TextInputWithIcon";
 import Error from "../toasts/Error";
 
 const FormInputWithError = ({ name, ...other }) => {
-	const { handleChange, handleSubmit, errors, setFieldTouched, touched } =
-		useFormikContext();
+	const { handleChange, errors, setFieldTouched, touched } = useFormikContext();
 
 	return (
 		<>

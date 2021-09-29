@@ -4,6 +4,7 @@ import { View, StyleSheet, Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import colors from "../config/colors";
+import routes from "../navigation/routes";
 
 const WelcomeScreen = ({ navigation }) => {
 	return (
@@ -21,7 +22,7 @@ const WelcomeScreen = ({ navigation }) => {
 			</View>
 			<PrimaryButton
 				title="Get Started"
-				onPress={() => navigation.navigate("Login")}
+				onPress={() => navigation.navigate(routes.LOGIN)}
 			/>
 		</View>
 	);
