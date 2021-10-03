@@ -13,6 +13,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import Search from "../screens/Search";
 import Notification from "../screens/NotificationScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import SearchFilter from "../screens/SearchFilter";
 
 import routes from "./routes";
 
