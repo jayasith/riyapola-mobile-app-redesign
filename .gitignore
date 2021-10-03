@@ -8,8 +8,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-**/api.config.js
-**/development.json
+/api/config/
+/app/api/api.config.js
 .vscode
 
 # macOS
