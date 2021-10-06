@@ -1,24 +1,32 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput, Image } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity } from "react-native";
 import { Feather, Octicons, AntDesign } from "@expo/vector-icons";
 import colors from "../config/colors";
 import Card from "../components/cards/Card";
 import ParagraphText from "../components/texts/ParagraphText";
 import SearchCard from "../components/cards/SearchCard";
 import TopicText from "../components/texts/TopicText";
+import TitleText from "../components/texts/TitleText";
+import useFetch from "../hooks/useFetch";
+import listings from "../api/controllers/listings.controller";
 
 const Search = () => {
+	
+	const {
+		data: latestListings,
+		error,
+		getData: getLatestListings,
+	} = useFetch(listings.getListings);
+
+	useEffect(() => {
+		getLatestListings();
+	}, []);
+	
 	return (
 		<View style={styles.background}>
 			<View style={styles.topic}>
-				<TopicText children={"Search"} />
+				<TitleText children={"Search"} />
 			</View>
-			<AntDesign
-				name="left"
-				style={styles.arrowIcon}
-				size={22}
-				color={colors.primary}
-			/>
 			<View style={styles.searchView}>
 				<View style={styles.inputs}>
 					<TextInput style={styles.searchInput} placeholder="Search" />
@@ -29,6 +37,7 @@ const Search = () => {
 						style={styles.searchIcon}
 					/>
 				</View>
+				<TouchableOpacity>
 				<View style={styles.filter}>
 					<Octicons
 						name="settings"
@@ -37,23 +46,28 @@ const Search = () => {
 						color="white"
 					/>
 				</View>
+				</TouchableOpacity>
 			</View>
-			<SearchCard
-				price={"90000000"}
-				date={new Date().toDateString()}
-				itemName={"Range Rover Sport"}
-				sellerName={"Chamindu Jayasith"}
-				imageUrl={require("../assets/images/Range_Rover.jpg")}
-				style={{ width: "100%", resizeMode: "contain", bottom: 300 }}
-			/>
-			<SearchCard
-				price={"50000000"}
-				date={new Date().toDateString()}
-				itemName={"Ford Mustang (2021)"}
-				sellerName={"Chamindu Jayasith"}
-				imageUrl={require("../assets/images/Ford_Mustang_2021.jpg")}
-				style={{ width: "100%", resizeMode: "contain", bottom: 170 }}
-			/>
+			<ScrollView style={styles.scrollView}> 
+					{ !error ? (
+					<View style={styles.cardContainer}>
+						{latestListings.map((latestListing) => (
+							<Card
+								key={latestListing.id}
+								image={latestListing.images[0].url}
+								title={latestListing.title}
+								price={latestListing.price}
+								seller="Thushara"
+								date={new Date().toDateString()}
+							/>
+						))}
+					</View>
+				) : (
+					<ParagraphText style={{ fontSize: 20, paddingHorizontal: 28 }}>
+						Something went wrong.
+					</ParagraphText>
+				)}
+			</ScrollView>
 		</View>
 	);
 };
@@ -61,12 +75,12 @@ const Search = () => {
 const styles = StyleSheet.create({
 	arrowIcon: {
 		position: "absolute",
-		top: "-4%",
-		left: "3%",
+		top: "-8.5%",
+		left: "4%",
 	},
 	topic: {
 		alignSelf: "center",
-		top: -35,
+		top: -75,
 	},
 	background: {
 		marginTop: "20%",
@@ -96,10 +110,12 @@ const styles = StyleSheet.create({
 		height: 40,
 		marginLeft: 10,
 		borderRadius: 8,
+		
 	},
 	searchView: {
 		flexDirection: "row",
 		justifyContent: "center",
+		top:"-13%"
 	},
 	filterIcon: {
 		transform: [{ rotate: "90deg" }],
@@ -166,6 +182,14 @@ const styles = StyleSheet.create({
 		right: "5%",
 		top: "80%",
 	},
+	cardContainer:{
+		paddingHorizontal: 30,
+		width: "100%",
+		marginBottom: 200,
+	},
+	scrollView:{
+		top:"-5%"
+	}
 });
 
 export default Search;
