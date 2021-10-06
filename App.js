@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { LogBox } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,7 +24,6 @@ import navigationThemeConfig from "./app/config/navigation.theme.config";
 import SettingsScreen from "./app/screens/SettingsScreen";
 import NotificationScreen from "./app/screens/NotificationScreen";
 
-
 const getFonts = () =>
 	Font.loadAsync({
 		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
@@ -33,13 +33,13 @@ const getFonts = () =>
 
 export default function App({ navigation }) {
 	const [fontLoaded, setFontLoaded] = useState(false);
+	// LogBox.ignoreAllLogs();
 
 	if (fontLoaded) {
 		return (
 			<NavigationContainer theme={navigationThemeConfig}>
 				<AppNavigator />
 			</NavigationContainer>
-
 		);
 	} else {
 		return (
