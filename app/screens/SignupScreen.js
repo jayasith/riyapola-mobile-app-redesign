@@ -35,7 +35,7 @@ const SignupScreen = () => {
 				/>
 			</View>
 			<View style={styles.inputs}>
-				<TextInput style={styles.passwordInput} placeholder="Password" />
+				<TextInput autoCapitalize="none" autoCorrect={false} secureTextEntry style={styles.passwordInput} placeholder="Password" />
 				<Entypo
 					name="lock"
 					size={24}

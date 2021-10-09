@@ -5,7 +5,11 @@ import ParagraphText from "../texts/ParagraphText";
 
 const Error = ({ error, visible }) => {
 	return error && visible ? (
-		<ParagraphText style={styles.error}>{error}</ParagraphText>
+		<ParagraphText
+			style={[styles.error, error.includes("Category") && { paddingLeft: 10 }]}
+		>
+			{error}
+		</ParagraphText>
 	) : null;
 };
 

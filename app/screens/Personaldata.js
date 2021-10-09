@@ -5,7 +5,7 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import DatePicker from "../components/pickers/Datepicker";
 import TextInputWithright from "../components/inputs/TextInputWithright";
 import RadioButtons from "../components/inputs/RadioButtons";
-import ImageInput from "../components/inputs/ImageInput";
+import ImageInput from "../components/inputs/ProfileImageInput";
 
 import colors from "../config/colors";
 const PersonalData = () => {
