@@ -3,6 +3,7 @@ import { LogBox } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
+import NetInfo from "@react-native-community/netinfo";
 
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -20,9 +21,11 @@ import SearchFilter from "./app/screens/SearchFilter";
 import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
-import navigationThemeConfig from "./app/config/navigation.theme.config";
 import SettingsScreen from "./app/screens/SettingsScreen";
 import NotificationScreen from "./app/screens/NotificationScreen";
+import OfflineNotice from "./app/components/toasts/OfflineNotice";
+
+import navigationThemeConfig from "./app/config/navigation.theme.config";
 
 const getFonts = () =>
 	Font.loadAsync({
@@ -33,13 +36,20 @@ const getFonts = () =>
 
 export default function App({ navigation }) {
 	const [fontLoaded, setFontLoaded] = useState(false);
-	// LogBox.ignoreAllLogs();
+	const unsubscribe = NetInfo.addEventListener((netInfo) =>
+		console.log(netInfo)
+	);
+	unsubscribe();
+	LogBox.ignoreAllLogs();
 
 	if (fontLoaded) {
 		return (
-			<NavigationContainer theme={navigationThemeConfig}>
-				<AppNavigator />
-			</NavigationContainer>
+			<>
+				<OfflineNotice />
+				<NavigationContainer theme={navigationThemeConfig}>
+					<AppNavigator />
+				</NavigationContainer>
+			</>
 		);
 	} else {
 		return (
