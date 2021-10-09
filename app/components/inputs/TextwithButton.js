@@ -3,8 +3,9 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import { IconButton, Colors } from "react-native-paper";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-TextWithButton = ({ icon, title, link }) => {
+TextWithButton = ({ icon, title }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.container1}>
@@ -16,7 +17,6 @@ TextWithButton = ({ icon, title, link }) => {
 				icon="chevron-right"
 				color={Colors.gray200}
 				size={24}
-				onPress={() => console.log("arrow")}
 			/>
 		</View>
 	);

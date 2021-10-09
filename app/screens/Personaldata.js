@@ -6,8 +6,24 @@ import DatePicker from "../components/pickers/Datepicker";
 import TextInputWithright from "../components/inputs/TextInputWithright";
 import RadioButtons from "../components/inputs/RadioButtons";
 import ImageInput from "../components/inputs/ImageInput";
+import * as Yup from "yup";
 
 import colors from "../config/colors";
+
+// const ValidationSchema = Yup.object({
+// 	name: Yup.string().required(),
+// 	Birthdate: Yup.date.required(),
+// 	Gender: Yup.boolean.required().oneOf([0, 1]),
+// 	Job: Yup.string.required(),
+// 	Location: Yup.string.required(),
+// });
+// const initialValues = {
+// 	name: "",
+// 	Birthdate: new Date(),
+// 	Gender: 0,
+// 	Job: "Sotware Engineer",
+// 	Location: "",
+// };
 const PersonalData = () => {
 	return (
 		<ScrollView>

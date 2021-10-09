@@ -2,8 +2,10 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
 import TextWithButton from "../components/inputs/TextwithButton";
-
+import { useNavigation } from "@react-navigation/core";
 const ProfileScreen = () => {
+	const navigation = useNavigation();
+
 	return (
 		<ScrollView>
 			<View style={styles.container}>
@@ -16,7 +18,11 @@ const ProfileScreen = () => {
 			</View>
 			<View style={styles.line} />
 			<TextWithButton title="My Listings" icon="format-list-bulleted" />
-			<TextWithButton title="Personal Data" icon="account" />
+			<TextWithButton
+				title="Personal Data"
+				icon="account"
+				OnPress={() => navigation.navigate("PersonalData")}
+			/>
 			<TextWithButton title="Settings" icon="cog" />
 			<View style={styles.line} />
 			<TextWithButton title="Rate Us" icon="thumb-up" />

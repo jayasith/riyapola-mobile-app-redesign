@@ -7,6 +7,8 @@ import {
 	Entypo,
 } from "@expo/vector-icons";
 
+import ProfileNavigator from "../navigation/ProfileNavigator";
+
 import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -54,7 +56,7 @@ const AppNavigator = () => {
 			/>
 			<Tab.Screen
 				name={"Profile"}
-				component={ProfileScreen}
+				component={ProfileNavigator}
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<Feather color={color} size={size} name="user" />
