@@ -17,7 +17,11 @@ const ProfileScreen = ({ navigation }) => {
 				<Text style={styles.job}>Photographer</Text>
 			</View>
 			<View style={styles.line} />
-			<TextWithButton title="My Listings" icon="format-list-bulleted" />
+			<TextWithButton
+				title="My Listings"
+				icon="format-list-bulleted"
+				OnPress={() => navigation.navigate("MyListingScreen")}
+			/>
 			<TextWithButton
 				title="Personal Data"
 				icon="account"
@@ -32,7 +36,11 @@ const ProfileScreen = ({ navigation }) => {
 			<TextWithButton title="Rate Us" icon="thumb-up" />
 			<TextWithButton title="FAQs" icon="dots-horizontal-circle" />
 			<View style={styles.line} />
-			<TextWithButton title="Log out" icon="logout" />
+			<TextWithButton
+				title="Log out"
+				icon="logout"
+				OnPress={() => navigation.navigate("Login")}
+			/>
 		</ScrollView>
 	);
 };
