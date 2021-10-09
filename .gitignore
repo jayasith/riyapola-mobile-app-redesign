@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 .expo/
 npm-debug.*
 *.jks
@@ -8,6 +8,9 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+/api/config/
+/app/api/api.config.js
+.vscode
 
 # macOS
 .DS_Store
