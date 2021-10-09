@@ -5,36 +5,43 @@ import TextWithButton from "../components/inputs/TextwithButton";
 
 const ProfileScreen = ({ navigation }) => {
   // const navigation = useNavigation();
-
-  return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Image
-          source={require("../assets/images/icon.png")}
-          style={styles.image}
-        />
-        <Text style={styles.title}>Hi Michelle</Text>
-        <Text style={styles.job}>Photographer</Text>
-      </View>
-      <View style={styles.line} />
-      <TextWithButton title="My Listings" icon="format-list-bulleted" />
-      <TextWithButton
-        title="Personal Data"
-        icon="account"
-        OnPress={() => navigation.navigate("PersonalData")}
-      />
-      <TextWithButton
-        title="Settings"
-        icon="cog"
-        OnPress={() => navigation.navigate("Settings")}
-      />
-      <View style={styles.line} />
-      <TextWithButton title="Rate Us" icon="thumb-up" />
-      <TextWithButton title="FAQs" icon="dots-horizontal-circle" />
-      <View style={styles.line} />
-      <TextWithButton title="Log out" icon="logout" />
-    </ScrollView>
-  );
+	return (
+		<ScrollView>
+			<View style={styles.container}>
+				<Image
+					source={require("../assets/images/icon.png")}
+					style={styles.image}
+				/>
+				<Text style={styles.title}>Hi Michelle</Text>
+				<Text style={styles.job}>Photographer</Text>
+			</View>
+			<View style={styles.line} />
+			<TextWithButton
+				title="My Listings"
+				icon="format-list-bulleted"
+				OnPress={() => navigation.navigate("MyListingScreen")}
+			/>
+			<TextWithButton
+				title="Personal Data"
+				icon="account"
+				OnPress={() => navigation.navigate("PersonalData")}
+			/>
+			<TextWithButton
+				title="Settings"
+				icon="cog"
+				OnPress={() => navigation.navigate("Settings")}
+			/>
+			<View style={styles.line} />
+			<TextWithButton title="Rate Us" icon="thumb-up" />
+			<TextWithButton title="FAQs" icon="dots-horizontal-circle" />
+			<View style={styles.line} />
+			<TextWithButton
+				title="Log out"
+				icon="logout"
+				OnPress={() => navigation.navigate("Login")}
+			/>
+		</ScrollView>
+	);
 };
 
 const styles = StyleSheet.create({

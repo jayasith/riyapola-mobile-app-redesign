@@ -5,29 +5,30 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import DatePicker from "../components/pickers/Datepicker";
 import TextInputWithright from "../components/inputs/TextInputWithright";
 import RadioButtons from "../components/inputs/RadioButtons";
-import ImageInput from "../components/inputs/ImageInput";
+import PersonalDataIMIn from "../components/inputs/PersonalDataImgIn";
+import ErrorInputWithRI from "../components/inputs/ErrorInputWithRI";
+import FormInputWithError from "../components/inputs/FormInputWithError";
 import Form from "../components/forms/Form";
 import * as Yup from "yup";
-const validationSchema = Yup.object().shape({
-	name: Yup.string().required().min(1).label("Name"),
-	date: Yup.number().required().min(1).label("Date"),
-	job: Yup.object().required().nullable().label("Job"),
-	location: Yup.string().required().label("Location"),
-	city: Yup.string().required().min(1).label("City"),
-	image: Yup.array().required().min(1, "Please select at least one image"),
-});
-
 import colors from "../config/colors";
 
-const handleSubmit = async () => {
-	console.log("welcome");
-};
+const validationSchema = Yup.object().shape({
+	name: Yup.string().required().nullable().label("Name"),
+	date: Yup.string().required().nullable().label("Date"),
+	job: Yup.string().required().nullable().label("Job"),
+	location: Yup.string().required().nullable().label("Location"),
+	image: Yup.string().required().min(1, "Please select at least one image"),
+});
+
 const PersonalData = () => {
+	const handleSubmit = async () => {
+		console.log("welcome");
+	};
 	return (
 		<Form
 			initialValues={{
 				name: "",
-				date: new Date(),
+				date: "",
 				job: "",
 				location: "",
 				image: null,
@@ -37,9 +38,9 @@ const PersonalData = () => {
 		>
 			<ScrollView>
 				<TitleText style={styles.title}>Personal data</TitleText>
-				<ImageInput name="image" />
+				<PersonalDataIMIn name="image" />
 				<Text style={styles.container}>Your Name :</Text>
-				<TextInputWithright
+				<ErrorInputWithRI
 					name="name"
 					placeholder="Your Name"
 					icon="account-outline"
@@ -50,13 +51,13 @@ const PersonalData = () => {
 				<Text style={styles.container}>Gender :</Text>
 				<RadioButtons />
 				<Text style={styles.container}>Your Job :</Text>
-				<TextInputWithright
+				<ErrorInputWithRI
 					name="job"
 					placeholder="Your Job"
 					icon="briefcase-outline"
 				/>
 				<Text style={styles.container}>Your Location :</Text>
-				<TextInputWithright
+				<ErrorInputWithRI
 					name="location"
 					placeholder="Your Location"
 					icon="map-marker"
