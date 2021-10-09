@@ -13,7 +13,7 @@ import SubtitleText from '../components/texts/SubtitleText';
 
 
 
-const SearchFilter = () => {
+const SearchFilter = ({navigation}) => {
 
 const radioButtonsData = [
 	{
@@ -40,7 +40,7 @@ function onPressRadioButton(radioButtonsArray) {
 
         return (
             <View style={styles.background}>
-                <AntDesign name="close" style={styles.closeIcon} size={22} color={colors.primary}/>
+                <AntDesign name="close" style={styles.closeIcon} size={22} color={colors.primary} onPress={()=>navigation.navigate("Search")}/>
                 <View style={styles.Topic}>
                     <SubtitleText children={"Filter"} />
                 </View>

@@ -5,23 +5,18 @@ import colors from '../config/colors'
 import {  AntDesign , Feather   } from '@expo/vector-icons';
 
 
-const SingleItem = () => {
+const SingleItem = ({route, navigation}) => {
+    const listing = route.params;
     return (
         <View>
-            <Image source={require("../assets/images/Range_Rover.jpg")} style={styles.image} />
-            <AntDesign name="left" style={styles.arrowIcon} size={22} color="white" /> 
+            <Image source={{uri : listing.images[0].url}} style={styles.image} />
+            <AntDesign name="left" style={styles.arrowIcon} size={22} color="white" onPress={()=>navigation.navigate("Search")} /> 
             <Feather name="share" style={styles.shareIcon} size={22} color="white" />
-            <Text style={styles.itemName}>Range Rover Sport</Text>
+            <Text style={styles.itemName}>{listing.title}</Text>
             <Text style={styles.itemDetail}>Style Name PHEV Autobiography</Text>
-            <Text style={styles.itemDetail}>Four Wheel Drive</Text>
-            <Text style={styles.itemDetail}>Five Passenger Capacity</Text>
-            <Text style={styles.itemDetail}>Four Passenger  Doors</Text>
-            <Text style={styles.itemDetail}>Sport  Utility</Text>                             
-            <Text style={styles.itemDetail}>Body Style</Text>                             
-            <Text style={styles.itemDetail}>Transmission: 8-Speed Automatic w/CommandShift -inc: gearshift paddles</Text> 
             <View style={styles.rowView}>
-            <Text style={styles.priceText}>Prce  :</Text>
-            <Text style={styles.texts}>  LKR 90000000</Text>
+            <Text style={styles.priceText}>Price  :</Text>
+            <Text style={styles.texts}>  LKR {listing.price}</Text>
             </View>
             <View style={styles.rowView}>
             <Text style={styles.priceText}>Location  :</Text>
@@ -29,7 +24,7 @@ const SingleItem = () => {
             </View>
             <View style={styles.rowView}>
             <Text style={styles.priceText}>Seller  :</Text>
-            <Text style={styles.texts}>  Chamindu</Text>
+            <Text style={styles.texts}>  Thushara</Text>
             </View>
             <Text style={styles.sellerText} >Contact Seller</Text>
             <View style={styles.messageView}>

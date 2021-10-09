@@ -5,7 +5,7 @@ import colors from '../config/colors';
 import TopicText from '../components/texts/TopicText';
 import PrimaryButton from '../components/buttons/PrimaryButton';
 
-const ForgotpasswordScreen = () => {
+const ForgotpasswordScreen = ({navigation}) => {
     return (
         <View style={styles.background}>
             <AntDesign name="left" style={styles.arrowIcon} size={22} color={colors.primary} /> 
@@ -17,7 +17,7 @@ const ForgotpasswordScreen = () => {
                 <TextInput style={styles.emailInput} placeholder='Email Address'  />
                 <Ionicons name="mail" size={24} color={colors.textPrimary} style={styles.emailIcon} />
             </View>
-            <PrimaryButton title={"Send"} />
+            <PrimaryButton title={"Send"} onPress={()=>navigation.navigate("Login")} />
         </View>
     )
 }
