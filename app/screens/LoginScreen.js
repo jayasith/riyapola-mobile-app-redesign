@@ -17,7 +17,7 @@ function LoginScreen() {
 			</View>
 			<View style={styles.circle}></View>
 			<View style={styles.inputs}>
-				<TextInput style={styles.emailInput} placeholder="Email Address" />
+				<TextInput autoCapitalize="none" autoCorrect={false} keyboardType="email-address" style={styles.emailInput} placeholder="Email Address" />
 				<Ionicons
 					name="mail"
 					size={24}
@@ -26,7 +26,7 @@ function LoginScreen() {
 				/>
 			</View>
 			<View style={styles.inputs}>
-				<TextInput style={styles.passwordInput} placeholder="Password" />
+				<TextInput autoCapitalize="none" autoCorrect={false} secureTextEntry style={styles.passwordInput} placeholder="Password" />
 				<Entypo
 					name="lock"
 					size={24}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text } from 'react-native'
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import colors from '../../config/colors';
@@ -9,14 +9,14 @@ const checkbox = ({name}) => {
     return (
 
              <BouncyCheckbox
-                            size={20}
+                            size={19}
                             fillColor={colors.primary}
                             unfillColor="#FFFFFF"
                             text={name}
                             iconStyle={{ borderColor: colors.primary }}
                             textStyle={{textDecorationLine: "none",
                             color:colors.textPrimary,
-                            fontSize:12, marginLeft:-10}}
+                            fontSize:17, marginLeft:-5}}
                             onPress={() => {setSelect(true)}}
                             />
     )

@@ -15,7 +15,6 @@ const Card = ({ title, date, image, seller, price }) => {
 						Rs. {price}
 					</ParagraphText>
 				</View>
-				{console.log(image)}
 				<Image source={{ uri: image }} style={styles.image} />
 			</View>
 			<View style={styles.textContainer}>
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
 	price: {
 		position: "absolute",
 		elevation: 1,
-		backgroundColor: "rgba(255,255,255, .4)	",
+		backgroundColor: "rgba(255,255,255, .6)	",
 		top: 12,
 		left: 10,
 		paddingVertical: 2,

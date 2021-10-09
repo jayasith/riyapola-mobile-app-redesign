@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image, StatusBar, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-import colors from "../config/colors";
-import listings from "../api/controllers/listings.controller";
-
 import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
 import ParagraphText from "../components/texts/ParagraphText";
 import Card from "../components/cards/Card";
 import useFetch from "../hooks/useFetch";
+
+import colors from "../config/colors";
+import listings from "../api/controllers/listings.controller";
 
 const WelcomeScreen = () => {
 	const {
