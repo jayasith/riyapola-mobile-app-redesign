@@ -7,7 +7,7 @@ const listings = [
 		price: 500000,
 		categoryId: 1,
 		userId: 1,
-		location: "Gampaha",
+		city: "Gampaha",
 	},
 	{
 		id: 2,
@@ -17,7 +17,7 @@ const listings = [
 		categoryId: 1,
 		price: 120000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 3,
@@ -27,7 +27,7 @@ const listings = [
 		price: 1000,
 		categoryId: 1,
 		userId: 1,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 4,
@@ -36,7 +36,7 @@ const listings = [
 		categoryId: 7,
 		price: 100,
 		userId: 2,
-		location: "Gampaha",
+		city: "Gampaha",
 	},
 	{
 		id: 5,
@@ -45,7 +45,7 @@ const listings = [
 		price: 1300,
 		categoryId: 7,
 		userId: 1,
-		location: "Gampaha",
+		city: "Gampaha",
 	},
 	{
 		id: 6,
@@ -54,7 +54,7 @@ const listings = [
 		price: 650,
 		categoryId: 7,
 		userId: 1,
-		location: "Gampaha",
+		city: "Gampaha",
 	},
 	{
 		id: 7,
@@ -64,7 +64,7 @@ const listings = [
 		categoryId: 5,
 		price: 11950,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 8,
@@ -73,7 +73,7 @@ const listings = [
 		categoryId: 5,
 		price: 5000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 9,
@@ -82,7 +82,7 @@ const listings = [
 		categoryId: 4,
 		price: 500,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 10,
@@ -91,7 +91,7 @@ const listings = [
 		categoryId: 6,
 		price: 5000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 11,
@@ -100,7 +100,7 @@ const listings = [
 		categoryId: 6,
 		price: 5000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 12,
@@ -109,7 +109,7 @@ const listings = [
 		categoryId: 6,
 		price: 100,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 13,
@@ -118,7 +118,7 @@ const listings = [
 		categoryId: 3,
 		price: 100000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 14,
@@ -127,7 +127,7 @@ const listings = [
 		categoryId: 3,
 		price: 100,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 15,
@@ -136,7 +136,7 @@ const listings = [
 		categoryId: 2,
 		price: 100000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 16,
@@ -145,7 +145,7 @@ const listings = [
 		categoryId: 2,
 		price: 150000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 	{
 		id: 17,
@@ -154,7 +154,7 @@ const listings = [
 		categoryId: 2,
 		price: 175000,
 		userId: 2,
-		location: "Colombo",
+		city: "Colombo",
 	},
 ];
 
