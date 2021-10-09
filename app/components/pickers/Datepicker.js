@@ -10,6 +10,7 @@ import colors from "../../config/colors";
 const TextDatePicker = () => {
 	const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 	const [date, setDate] = useState(new Date());
+	const [brithDate, setBirthDate] = useState("");
 
 	const showDatePicker = () => {
 		setDatePickerVisibility(true);
@@ -22,11 +23,16 @@ const TextDatePicker = () => {
 	const handleConfirm = (date) => {
 		console.warn("A date has been picked: ", date);
 		setDate(date);
+		setBirthDate(date.toLocaleString());
 		hideDatePicker();
 	};
 	return (
 		<View style={styles.container}>
-			<TextInput style={styles.text} placeholder="Your Birth date" />
+			<TextInput
+				style={styles.text}
+				placeholder="Your Birth date"
+				value={brithDate}
+			/>
 
 			<IconButton
 				style={styles.icon}

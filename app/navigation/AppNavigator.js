@@ -7,6 +7,8 @@ import {
 	Entypo,
 } from "@expo/vector-icons";
 
+import ProfileNavigator from "../navigation/ProfileNavigator";
+
 import HomeScreen from "../screens/HomeScreen";
 import NewListingScreen from "../screens/NewListingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -22,7 +24,6 @@ import AllListingNavigation from "./AllListingNavigation";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
@@ -81,7 +82,7 @@ const AppNavigator = () => {
 
 			<Tab.Screen
 				name={routes.PROFILE}
-				component={ProfileScreen}
+				component={ProfileNavigator}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Feather color={color} size={30} name="user" />
