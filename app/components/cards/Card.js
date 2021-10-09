@@ -6,9 +6,9 @@ import colors from "../../config/colors";
 import ParagraphText from "../texts/ParagraphText";
 import TopicText from "../texts/TopicText";
 
-const Card = ({ title, date, image, seller, price }) => {
+const Card = ({ title, date, image, seller, price , onPress}) => {
 	return (
-		<TouchableOpacity style={styles.cardContainer}>
+		<TouchableOpacity style={styles.cardContainer} onPress={onPress} >
 			<View>
 				<View style={styles.price}>
 					<ParagraphText style={{ color: colors.textPrimary }}>

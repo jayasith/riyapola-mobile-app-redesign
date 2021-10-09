@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity } from "react-native";
 import { Feather, Octicons, AntDesign } from "@expo/vector-icons";
 import colors from "../config/colors";
@@ -10,7 +10,10 @@ import TitleText from "../components/texts/TitleText";
 import useFetch from "../hooks/useFetch";
 import listings from "../api/controllers/listings.controller";
 
-const Search = () => {
+const Search = ({navigation}) => {
+	
+	const [SearchText, setSearchText] = useState("");
+	const [ItemList, setItemList] = useState([])
 	
 	const {
 		data: latestListings,
@@ -19,9 +22,13 @@ const Search = () => {
 	} = useFetch(listings.getListings);
 
 	useEffect(() => {
-		getLatestListings();
+		getLatestListings(latestListings);
+		setItemList()
 	}, []);
 	
+	const searchItems = (text) =>{
+
+	}
 	return (
 		<View style={styles.background}>
 			<View style={styles.topic}>
@@ -29,7 +36,7 @@ const Search = () => {
 			</View>
 			<View style={styles.searchView}>
 				<View style={styles.inputs}>
-					<TextInput style={styles.searchInput} placeholder="Search" />
+					<TextInput onChange={(e)=>{setSearchText(e.target.value);}} style={styles.searchInput} placeholder="Search" />
 					<Feather
 						name="search"
 						size={24}
@@ -37,7 +44,7 @@ const Search = () => {
 						style={styles.searchIcon}
 					/>
 				</View>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={()=>navigation.navigate("Filter")}>
 				<View style={styles.filter}>
 					<Octicons
 						name="settings"
@@ -52,6 +59,7 @@ const Search = () => {
 					{ !error ? (
 					<View style={styles.cardContainer}>
 						{latestListings.map((latestListing) => (
+						// (SearchText.length !== 0) ?( 	latestListing.title.toLowerCase().includes(SearchText.toLowerCase()) && (
 							<Card
 								key={latestListing.id}
 								image={latestListing.images[0].url}
@@ -59,8 +67,18 @@ const Search = () => {
 								price={latestListing.price}
 								seller="Thushara"
 								date={new Date().toDateString()}
+								onPress={()=>navigation.navigate("SingleItem", latestListing)}
 							/>
-						))}
+						// )):(<Card
+						// 		key={latestListing.id}
+						// 		image={latestListing.images[0].url}
+						// 		title={latestListing.title}
+						// 		price={latestListing.price}
+						// 		seller="Thushara"
+						// 		date={new Date().toDateString()}
+						// 		onPress={()=>navigation.navigate("SingleItem", latestListing)}
+						// 	/>)
+							))}
 					</View>
 				) : (
 					<ParagraphText style={{ fontSize: 20, paddingHorizontal: 28 }}>
