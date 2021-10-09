@@ -1,23 +1,15 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import ContactUsScreen from "../screens/ContactUsScreen";
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import HelpScreen from "../screens/HelpScreen";
 import SettingsScreen from "../screens/SettingsScreen";
-import TermsAndConditions from "../screens/TermsAndConditions";
+import { HelpScreenNavigator } from "./HelpScreenNavigator";
 
-const screens = {
-  SettingsScreen: {
-    screen: SettingsScreen,
-  },
-  HelpScreen: {
-    screen: HelpScreen,
-  },
-  ContactUsScreen: {
-    screen: ContactUsScreen,
-  },
-  TermsAndConditions: {
-    screen: TermsAndConditions,
-  },
-};
-const SettingsNavigator = createStackNavigator(screens);
-export default createAppContainer(SettingsNavigator);
+const Stack = createStackNavigator();
+const SettingsNavigator = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="Settings" component={SettingsScreen} />
+    <Stack.Screen name="Help" component={HelpScreenNavigator} />
+  </Stack.Navigator>
+);
+
+export default SettingsNavigator;

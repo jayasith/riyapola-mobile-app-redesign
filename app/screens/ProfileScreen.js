@@ -4,8 +4,7 @@ import React from "react";
 import TextWithButton from "../components/inputs/TextwithButton";
 
 const ProfileScreen = ({ navigation }) => {
-	// const navigation = useNavigation();
-
+  // const navigation = useNavigation();
 	return (
 		<ScrollView>
 			<View style={styles.container}>
@@ -30,7 +29,7 @@ const ProfileScreen = ({ navigation }) => {
 			<TextWithButton
 				title="Settings"
 				icon="cog"
-				OnPress={() => navigation.navigate("SettingsScreen")}
+				OnPress={() => navigation.navigate("Settings")}
 			/>
 			<View style={styles.line} />
 			<TextWithButton title="Rate Us" icon="thumb-up" />
@@ -46,38 +45,38 @@ const ProfileScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-	image: {
-		marginTop: 20,
-		width: 70,
-		height: 70,
-		borderRadius: 10,
-	},
-	title: {
-		paddingTop: 30,
-		paddingBottom: 20,
-		left: 30,
-		fontSize: 20,
-		color: "grey",
-	},
-	job: {
-		fontSize: 10,
-		paddingTop: 60,
-		right: 70,
-		color: "grey",
-	},
-	container: {
-		flexDirection: "row",
-		marginHorizontal: 36,
-		marginTop: 50,
-		marginBottom: 20,
-	},
-	line: {
-		borderBottomColor: "#9fa098",
-		borderBottomWidth: 0.7,
-		flexDirection: "row",
-		marginHorizontal: 40,
+  image: {
+    marginTop: 20,
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+  },
+  title: {
+    paddingTop: 30,
+    paddingBottom: 20,
+    left: 30,
+    fontSize: 20,
+    color: "grey",
+  },
+  job: {
+    fontSize: 10,
+    paddingTop: 60,
+    right: 70,
+    color: "grey",
+  },
+  container: {
+    flexDirection: "row",
+    marginHorizontal: 36,
+    marginTop: 50,
+    marginBottom: 20,
+  },
+  line: {
+    borderBottomColor: "#9fa098",
+    borderBottomWidth: 0.7,
+    flexDirection: "row",
+    marginHorizontal: 40,
 
-		marginTop: 13,
-	},
+    marginTop: 13,
+  },
 });
 export default ProfileScreen;
