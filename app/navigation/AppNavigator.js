@@ -14,7 +14,6 @@ import Search from "../screens/Search";
 import Notification from "../screens/NotificationScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import SearchFilter from "../screens/SearchFilter";
-
 import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
@@ -65,7 +64,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name={routes.NOTIFICATIONS}
-        component={SettingsScreen}
+        component={HelpScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather color={color} size={30} name="bell" />
