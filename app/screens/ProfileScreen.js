@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import TextWithButton from "../components/inputs/TextwithButton";
 import { useNavigation } from "@react-navigation/core";
+
 const ProfileScreen = () => {
 	const navigation = useNavigation();
 
