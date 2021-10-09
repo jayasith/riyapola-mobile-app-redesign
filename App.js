@@ -22,37 +22,36 @@ import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import SettingsScreen from "./app/screens/SettingsScreen";
 import NotificationScreen from "./app/screens/NotificationScreen";
-
 import navigationThemeConfig from "./app/config/navigation.theme.config";
 
 const getFonts = () =>
-	Font.loadAsync({
-		"poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
-		"poppins-medium": require("./app/assets/fonts/Poppins-Medium.ttf"),
-		"poppins-bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
-	});
+  Font.loadAsync({
+    "poppins-regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
+    "poppins-medium": require("./app/assets/fonts/Poppins-Medium.ttf"),
+    "poppins-bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
+  });
 
 export default function App({ navigation }) {
-	const [fontLoaded, setFontLoaded] = useState(false);
-	LogBox.ignoreAllLogs();
+  const [fontLoaded, setFontLoaded] = useState(false);
+  LogBox.ignoreAllLogs();
 
-	if (fontLoaded) {
-		return (
-			<NavigationContainer theme={navigationThemeConfig}>
-				<AppNavigator />
-			</NavigationContainer>
-		);
-	} else {
-		return (
-			<>
-				<AppLoading
-					startAsync={getFonts}
-					onFinish={() => setFontLoaded(true)}
-					onError={(err) =>
-						console.error("error occurred while loading fonts", err)
-					}
-				/>
-			</>
-		);
-	}
+  if (fontLoaded) {
+    return (
+      <NavigationContainer theme={navigationThemeConfig}>
+        <AppNavigator />
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <>
+        <AppLoading
+          startAsync={getFonts}
+          onFinish={() => setFontLoaded(true)}
+          onError={(err) =>
+            console.error("error occurred while loading fonts", err)
+          }
+        />
+      </>
+    );
+  }
 }
