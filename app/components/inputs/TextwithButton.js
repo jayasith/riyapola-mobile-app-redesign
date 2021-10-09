@@ -3,22 +3,27 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import { IconButton, Colors } from "react-native-paper";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import {
+	TouchableOpacity,
+	TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
 
-TextWithButton = ({ icon, title }) => {
+TextWithButton = ({ icon, title, OnPress }) => {
 	return (
-		<View style={styles.container}>
-			<View style={styles.container1}>
-				<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
-				<Text style={styles.text}>{title}</Text>
+		<TouchableOpacity onPress={OnPress}>
+			<View style={styles.container}>
+				<View style={styles.container1}>
+					<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
+					<Text style={styles.text}>{title}</Text>
+				</View>
+				<IconButton
+					style={styles.icon1}
+					icon="chevron-right"
+					color={Colors.gray200}
+					size={24}
+				/>
 			</View>
-			<IconButton
-				style={styles.icon1}
-				icon="chevron-right"
-				color={Colors.gray200}
-				size={24}
-			/>
-		</View>
+		</TouchableOpacity>
 	);
 };
 const styles = StyleSheet.create({

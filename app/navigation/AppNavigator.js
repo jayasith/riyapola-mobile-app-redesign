@@ -24,7 +24,6 @@ import AllListingNavigation from "./AllListingNavigation";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
@@ -83,7 +82,7 @@ const AppNavigator = () => {
 
 			<Tab.Screen
 				name={routes.PROFILE}
-				component={ProfileScreen}
+				component={ProfileNavigator}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Feather color={color} size={30} name="user" />

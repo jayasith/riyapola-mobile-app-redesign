@@ -19,20 +19,9 @@ const validationSchema = Yup.object().shape({
 
 import colors from "../config/colors";
 
-// const ValidationSchema = Yup.object({
-// 	name: Yup.string().required(),
-// 	Birthdate: Yup.date.required(),
-// 	Gender: Yup.boolean.required().oneOf([0, 1]),
-// 	Job: Yup.string.required(),
-// 	Location: Yup.string.required(),
-// });
-// const initialValues = {
-// 	name: "",
-// 	Birthdate: new Date(),
-// 	Gender: 0,
-// 	Job: "Sotware Engineer",
-// 	Location: "",
-// };
+const handleSubmit = async () => {
+	console.log("welcome");
+};
 const PersonalData = () => {
 	return (
 		<Form

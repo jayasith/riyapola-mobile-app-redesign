@@ -2,10 +2,9 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
 import TextWithButton from "../components/inputs/TextwithButton";
-import { useNavigation } from "@react-navigation/core";
 
-const ProfileScreen = () => {
-	const navigation = useNavigation();
+const ProfileScreen = ({ navigation }) => {
+	// const navigation = useNavigation();
 
 	return (
 		<ScrollView>
@@ -24,7 +23,11 @@ const ProfileScreen = () => {
 				icon="account"
 				OnPress={() => navigation.navigate("PersonalData")}
 			/>
-			<TextWithButton title="Settings" icon="cog" />
+			<TextWithButton
+				title="Settings"
+				icon="cog"
+				OnPress={() => navigation.navigate("SettingsScreen")}
+			/>
 			<View style={styles.line} />
 			<TextWithButton title="Rate Us" icon="thumb-up" />
 			<TextWithButton title="FAQs" icon="dots-horizontal-circle" />

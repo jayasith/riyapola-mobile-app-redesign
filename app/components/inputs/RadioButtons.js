@@ -24,6 +24,8 @@ RadioButtons = () => {
 
 	function onPressRadioButton(radioButtonsArray) {
 		setRadioButtons(radioButtonsArray);
+		console.log(radioButtonsArray[0].label);
+		console.log(radioButtonsArray[1].label);
 	}
 
 	return (
