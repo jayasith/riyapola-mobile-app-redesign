@@ -6,13 +6,13 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const radioButtonsData = [
 	{
-		id: "1", // acts as primary key, should be unique and non-empty string
+		id: "0", // acts as primary key, should be unique and non-empty string
 		label: "Male",
 		value: "Male",
 		color: "#1652DA",
 	},
 	{
-		id: "2",
+		id: "1",
 		label: "Female",
 		value: "Female",
 		color: "#1652DA",
@@ -24,6 +24,8 @@ RadioButtons = () => {
 
 	function onPressRadioButton(radioButtonsArray) {
 		setRadioButtons(radioButtonsArray);
+		console.log(radioButtonsArray[0].label);
+		console.log(radioButtonsArray[1].label);
 	}
 
 	return (
