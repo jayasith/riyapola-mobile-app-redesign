@@ -34,7 +34,7 @@ const getFonts = () =>
 
 export default function App({ navigation }) {
 	const [fontLoaded, setFontLoaded] = useState(false);
-	// LogBox.ignoreAllLogs();
+	LogBox.ignoreAllLogs();
 
 	if (fontLoaded) {
 		return (
