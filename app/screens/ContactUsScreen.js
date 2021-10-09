@@ -1,4 +1,6 @@
 import React from "react";
+import * as Yup from "yup";
+import SuccessScreen from "../screens/SuccessScreen";
 import ParagraphText from "../components/texts/ParagraphText";
 import TitleText from "../components/texts/TitleText";
 import TopicText from "../components/texts/TopicText";
@@ -6,6 +8,7 @@ import TextInputWithIcon from "../components/inputs/TextInputWithIcon";
 import SubmitButton from "../components/buttons/SubmitButton";
 import Form from "../components/forms/Form";
 import colors from "../config/colors";
+import listings from "../api/controllers/listings.controller";
 import {
   View,
   StatusBar,
@@ -13,8 +16,11 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
-
+const validationSchema = Yup.object().shape({
+  description: Yup.string().required().label("Description"),
+});
 const ContactUsScreen = () => {
+  co;
   return (
     <Form>
       {/* <SuccessScreen progress={progress} visible={successVisible} /> */}
