@@ -20,9 +20,10 @@ import SearchFilter from "./app/screens/SearchFilter";
 import SignupScreen from "./app/screens/SignupScreen";
 import SingleItem from "./app/screens/SingleItem";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
-import navigationThemeConfig from "./app/config/navigation.theme.config";
 import SettingsScreen from "./app/screens/SettingsScreen";
 import NotificationScreen from "./app/screens/NotificationScreen";
+
+import navigationThemeConfig from "./app/config/navigation.theme.config";
 
 const getFonts = () =>
 	Font.loadAsync({
