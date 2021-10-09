@@ -17,10 +17,12 @@ import SearchFilter from "../screens/SearchFilter";
 import HelpScreen from "../screens/HelpScreen";
 
 import routes from "./routes";
+import AllListingNavigation from "./AllListingNavigation";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
+
 	return (
 		<Tab.Navigator>
 			<Tab.Screen
@@ -37,7 +39,7 @@ const AppNavigator = () => {
 			/>
 			<Tab.Screen
 				name={"All Listings"}
-				component={Search}
+				component={AllListingNavigation}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Entypo color={color} size={30} name="list" />

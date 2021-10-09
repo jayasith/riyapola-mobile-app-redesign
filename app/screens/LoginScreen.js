@@ -4,7 +4,7 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import colors from "../config/colors";
 import { Ionicons, Entypo } from "@expo/vector-icons";
 
-function LoginScreen() {
+function LoginScreen({navigation}) {
 	return (
 		<View style={styles.background}>
 			<Image
@@ -13,7 +13,7 @@ function LoginScreen() {
 			/>
 			<View style={styles.texts}>
 				<Text style={styles.loginText}>Login </Text>
-				<Text style={styles.signupText}>Signup </Text>
+				<Text style={styles.signupText} onPress={()=>navigation.navigate("SingUp")} >Signup </Text>
 			</View>
 			<View style={styles.circle}></View>
 			<View style={styles.inputs}>
@@ -34,9 +34,9 @@ function LoginScreen() {
 					style={styles.passwordIcon}
 				/>
 			</View>
-			<Text style={styles.forgotText}>Forgot password</Text>
+			<Text style={styles.forgotText} onPress={()=>navigation.navigate("ForgotPassword")} >Forgot password</Text>
 			<View style={styles.signupButton}>
-				<PrimaryButton title="Login" />
+				<PrimaryButton title="Login" onPress={()=>navigation.navigate("Home")} />
 			</View>
 		</View>
 	);
