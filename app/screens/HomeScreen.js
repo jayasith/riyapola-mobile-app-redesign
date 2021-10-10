@@ -8,10 +8,12 @@ import ParagraphText from "../components/texts/ParagraphText";
 import Card from "../components/cards/Card";
 import useFetch from "../hooks/useFetch";
 
+import categories from "../config/categories";
 import colors from "../config/colors";
 import listings from "../api/controllers/listings.controller";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
+	const [listingsList, setListingsList] = useState([]);
 	const {
 		data: latestListings,
 		error,
@@ -20,7 +22,8 @@ const WelcomeScreen = () => {
 
 	useEffect(() => {
 		getLatestListings();
-	}, []);
+		// setListingsList();
+	});
 
 	return (
 		<View>
@@ -35,12 +38,9 @@ const WelcomeScreen = () => {
 			<View>
 				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
 					<View style={styles.categories}>
-						<CategoryButton title="Vehicles" />
-						<CategoryButton title="Electronics" />
-						<CategoryButton title="Property" />
-						<CategoryButton title="Furniture" />
-						<CategoryButton title="Sports" />
-						<CategoryButton title="Clothing" />
+						{categories.map((category) => (
+							<CategoryButton title={category.label} />
+						))}
 					</View>
 				</ScrollView>
 			</View>
@@ -61,6 +61,7 @@ const WelcomeScreen = () => {
 								price={latestListing.price}
 								seller="Thushara"
 								date={new Date().toDateString()}
+								onPress={() => navigation.navigate("SingleItem", latestListing)}
 							/>
 						))}
 					</View>

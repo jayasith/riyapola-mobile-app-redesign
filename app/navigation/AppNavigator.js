@@ -1,4 +1,5 @@
 import React from "react";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
 	MaterialCommunityIcons,
@@ -22,7 +23,6 @@ import AllListingNavigation from "./AllListingNavigation";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
-
 	return (
 		<Tab.Navigator>
 			<Tab.Screen

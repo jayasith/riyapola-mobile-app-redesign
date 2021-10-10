@@ -35,7 +35,7 @@ app.use("/api/messages", messages);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-	console.log(`connected to mongodb and started listening on port ${PORT}`);
+	console.log(`connected and started listening on port ${PORT}`);
 });
 
 app.get("/", (req, res) => res.send("<h3>Riyapola API</h3>"));
