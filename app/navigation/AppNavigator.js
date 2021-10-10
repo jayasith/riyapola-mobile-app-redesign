@@ -19,6 +19,7 @@ import HelpScreen from "../screens/HelpScreen";
 
 import routes from "./routes";
 import AllListingNavigation from "./AllListingNavigation";
+import HomeListingNavigation from "./HomeListingNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +28,7 @@ const AppNavigator = () => {
 		<Tab.Navigator>
 			<Tab.Screen
 				name={routes.HOME}
-				component={HomeScreen}
+				component={HomeListingNavigation}
 				options={{
 					tabBarIcon: ({ color }) => (
 						<Feather color={color} size={30} name="home" />

@@ -165,6 +165,11 @@ const addListing = (listing) => {
 
 const getListings = () => listings;
 
+const getListingsOfCategory = (id) => {
+	console.log(id);
+	listings.filter((listings) => id === listings.categoryId);
+};
+
 const getListing = (id) => listings.find((listing) => listing.id === id);
 
 const filterListings = (predicate) => listings.filter(predicate);
@@ -174,4 +179,5 @@ module.exports = {
 	getListings,
 	getListing,
 	filterListings,
+	getListingsOfCategory,
 };

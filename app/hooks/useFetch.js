@@ -10,7 +10,6 @@ const useFetch = (apiCallFunction) => {
 
 	const getData = async (...args) => {
 		const res = await apiCallFunction(...args);
-
 		if (!res.ok) return setError(true);
 
 		setError(false);

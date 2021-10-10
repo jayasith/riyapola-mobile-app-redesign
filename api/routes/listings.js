@@ -38,6 +38,13 @@ router.get("/", (req, res) => {
 	res.send(resources);
 });
 
+router.get("/:id", (req, res) => {
+	console.log(req.params.id);
+	const listings = store.getListingsOfCategory(req.params.id);
+	console.log(listings);
+	res.send(listings);
+});
+
 router.post(
 	"/",
 	[

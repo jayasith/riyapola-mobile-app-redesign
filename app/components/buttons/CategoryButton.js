@@ -5,8 +5,8 @@ import colors from "../../config/colors";
 
 const CategoryButton = ({ title, onPress }) => {
 	return (
-		<TouchableOpacity style={styles.button} onPress={onPress}>
-			<Text style={styles.text}>{title}</Text>
+		<TouchableOpacity style={[styles.button]} onPress={() => onPress()}>
+			<Text style={[styles.text]}>{title}</Text>
 		</TouchableOpacity>
 	);
 };

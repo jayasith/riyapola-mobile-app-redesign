@@ -6,24 +6,37 @@ import CategoryButton from "../components/buttons/CategoryButton";
 import SubtitleText from "../components/texts/SubtitleText";
 import ParagraphText from "../components/texts/ParagraphText";
 import Card from "../components/cards/Card";
-import useFetch from "../hooks/useFetch";
 
 import categories from "../config/categories";
 import colors from "../config/colors";
 import listings from "../api/controllers/listings.controller";
 
 const WelcomeScreen = ({ navigation }) => {
-	const [listingsList, setListingsList] = useState([]);
-	const {
-		data: latestListings,
-		error,
-		getData: getLatestListings,
-	} = useFetch(listings.getListings);
+	const [allListings, setAllListings] = useState([]);
+	const [newListings, setNewListings] = useState([]);
+	const [isFiltered, setIsFiltered] = useState(false);
+	const [error, setError] = useState("");
+
+	const getListings = async () => {
+		try {
+			const allListings = await listings.getListings();
+			setAllListings(allListings.data);
+			setNewListings(allListings.data);
+		} catch (err) {
+			setError("Something went wrong");
+		}
+	};
+
+	const getCategories = async (id) => {
+		if (id === undefined) return getListings();
+		const filtered = allListings.filter((listing) => id === listing.categoryId);
+		setIsFiltered(true);
+		setNewListings(filtered);
+	};
 
 	useEffect(() => {
-		getLatestListings();
-		// setListingsList();
-	});
+		getListings();
+	}, []);
 
 	return (
 		<View>
@@ -38,8 +51,15 @@ const WelcomeScreen = ({ navigation }) => {
 			<View>
 				<ScrollView horizontal showsHorizontalScrollIndicator={false}>
 					<View style={styles.categories}>
+						<CategoryButton
+							title="All"
+							onPress={() => getCategories(undefined)}
+						/>
 						{categories.map((category) => (
-							<CategoryButton title={category.label} />
+							<CategoryButton
+								title={category.label}
+								onPress={() => getCategories(category.value)}
+							/>
 						))}
 					</View>
 				</ScrollView>
@@ -53,17 +73,33 @@ const WelcomeScreen = ({ navigation }) => {
 			>
 				{!error ? (
 					<View style={styles.cardsContainer}>
-						{latestListings.map((latestListing) => (
-							<Card
-								key={latestListing.id}
-								image={latestListing.images[0].url}
-								title={latestListing.title}
-								price={latestListing.price}
-								seller="Thushara"
-								date={new Date().toDateString()}
-								onPress={() => navigation.navigate("SingleItem", latestListing)}
-							/>
-						))}
+						{isFiltered
+							? newListings.map((latestListing) => (
+									<Card
+										key={latestListing.id}
+										image={latestListing.images[0].url}
+										title={latestListing.title}
+										price={latestListing.price}
+										seller="Thushara"
+										date={new Date().toDateString()}
+										onPress={() => {
+											navigation.navigate("SingleItem", latestListing);
+										}}
+									/>
+							  ))
+							: newListings.map((latestListing) => (
+									<Card
+										key={latestListing.id}
+										image={latestListing.images[0].url}
+										title={latestListing.title}
+										price={latestListing.price}
+										seller="Thushara"
+										date={new Date().toDateString()}
+										onPress={() =>
+											navigation.navigate("SingleItem", latestListing)
+										}
+									/>
+							  ))}
 					</View>
 				) : (
 					<ParagraphText style={{ fontSize: 20, paddingHorizontal: 28 }}>
