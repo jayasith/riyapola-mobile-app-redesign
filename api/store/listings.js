@@ -160,10 +160,15 @@ const listings = [
 
 const addListing = (listing) => {
 	listing.id = listings.length + 1;
-	listings.push(listing);
+	listings.unshift(listing);
 };
 
 const getListings = () => listings;
+
+const getListingsOfCategory = (id) => {
+	console.log(id);
+	listings.filter((listings) => id === listings.categoryId);
+};
 
 const getListing = (id) => listings.find((listing) => listing.id === id);
 
@@ -174,4 +179,5 @@ module.exports = {
 	getListings,
 	getListing,
 	filterListings,
+	getListingsOfCategory,
 };
