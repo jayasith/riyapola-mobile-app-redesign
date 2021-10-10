@@ -3,17 +3,30 @@ import { View, Text, Image, StyleSheet, TextInput } from 'react-native'
 import PrimaryButton from '../components/buttons/PrimaryButton'
 import colors from '../config/colors'
 import {  AntDesign , Feather   } from '@expo/vector-icons';
-
+import {Formik} from "formik";
+import * as Yup from "yup";
 
 const SingleItem = ({route, navigation}) => {
     const listing = route.params;
+
+
+	const validation = Yup.object().shape({
+		description: Yup.string().required().label("Description")
+	})
+
+	const handleSubmit = async()=>{
+		
+	}
     return (
-        <View>
+        <View style={styles.background}>
             <Image source={{uri : listing.images[0].url}} style={styles.image} />
             <AntDesign name="left" style={styles.arrowIcon} size={22} color="white" onPress={()=>navigation.navigate("Search")} /> 
             <Feather name="share" style={styles.shareIcon} size={22} color="white" />
             <Text style={styles.itemName}>{listing.title}</Text>
-            <Text style={styles.itemDetail}>Style Name PHEV Autobiography</Text>
+            <View style={styles.rowView}>
+            <Text style={styles.priceText}>Description  :</Text>
+            <Text style={styles.itemDetail}>{listing.description}</Text>
+            </View>
             <View style={styles.rowView}>
             <Text style={styles.priceText}>Price  :</Text>
             <Text style={styles.texts}>  LKR {listing.price}</Text>
@@ -27,15 +40,31 @@ const SingleItem = ({route, navigation}) => {
             <Text style={styles.texts}>  Thushara</Text>
             </View>
             <Text style={styles.sellerText} >Contact Seller</Text>
-            <View style={styles.messageView}>
-                <TextInput style={styles.message} placeholder='Message' />
-            </View>
-            <PrimaryButton style={{top: 10,}} title={"Send"} />
+            <Formik 
+				initialValues={{description:""}} 
+				onSubmit={handleSubmit}
+				validationSchema={validation}>
+					{({handleChange, handleSubmit, errors, setFieldTouched, touched })=>(
+					<>
+                        {touched.password &&<Text style={styles.error} >{errors.description}</Text>}
+                        <View style={styles.messageView}>
+                            <TextInput onBlur={()=>setFieldTouched("description")} onChangeText={handleChange("description")} autoCapitalize="none" style={styles.message} placeholder='Message' />
+                        </View>
+                        <View style={styles.signupButton} >
+                            <PrimaryButton style={{top: 20,}} title={"Send"} onPress={handleSubmit} />
+                        </View>
+                    </>)}
+			</Formik>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    background: {
+		flex: 1,
+		justifyContent: "flex-end",
+	},
     image:{
         width:"100%",
         height:260
@@ -52,7 +81,6 @@ const styles = StyleSheet.create({
         fontSize:15,
         color:colors.textPrimary,
         alignSelf:'flex-start',
-        marginTop:"1%",
         marginLeft:"3%"
     },
     rowView:{
@@ -102,7 +130,16 @@ const styles = StyleSheet.create({
         position:'absolute',
         top:'4.5%',
         right:'5%'
-    }
+    },
+    signupButton:{
+        paddingBottom: 100,
+    },
+    error:{
+		position: "relative",
+		color:'red',
+		marginLeft:"12%",
+		top:0
+	},
 
 
 })

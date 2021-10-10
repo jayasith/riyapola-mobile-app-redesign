@@ -30,6 +30,7 @@ const radioButtonsData = [
 	},
 ];
 
+
 const [current, setCurrent] = useState(0);
 
 const [radioButtons, setRadioButtons] = useState(radioButtonsData);
@@ -44,9 +45,9 @@ function onPressRadioButton(radioButtonsArray) {
                 <View style={styles.Topic}>
                     <SubtitleText children={"Filter"} />
                 </View>
-                <View style={styles.resetTextView}>
+                {/* <View style={styles.resetTextView}>
                 <Text style={styles.resetText}>Reset</Text>
-                </View>
+                </View> */}
                 <Text style={styles.sortText}>Sort</Text>
                 <View style={styles.radio}>
                     <RadioGroup
@@ -110,7 +111,7 @@ function onPressRadioButton(radioButtonsArray) {
                             </View>
                         </View>
                     </View>
-                    <PrimaryButton title={"Result"} />
+                    <PrimaryButton title={"Result"} onPress={()=>navigation.navigate("Search")}/>
             </View>
         )
     }

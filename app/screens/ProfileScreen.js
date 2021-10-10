@@ -2,8 +2,11 @@ import { Image, ScrollView, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
 import TextWithButton from "../components/inputs/TextwithButton";
+import userAuth from "../api/auth/userAuth";
 
 const ProfileScreen = () => {
+	const {user , logOut} = userAuth();
+
 	return (
 		<ScrollView>
 			<View style={styles.container}>
@@ -11,7 +14,7 @@ const ProfileScreen = () => {
 					source={require("../assets/images/icon.png")}
 					style={styles.image}
 				/>
-				<Text style={styles.title}>Hi Michelle</Text>
+				<Text style={styles.title}>Hi {user.name}</Text>
 				<Text style={styles.job}>Photographer</Text>
 			</View>
 			<View style={styles.line} />
@@ -22,7 +25,7 @@ const ProfileScreen = () => {
 			<TextWithButton title="Rate Us" icon="thumb-up" />
 			<TextWithButton title="FAQs" icon="dots-horizontal-circle" />
 			<View style={styles.line} />
-			<TextWithButton title="Log out" icon="logout" />
+			<TextWithButton title="Log out" icon="logout" onPress={()=>logOut()} />
 		</ScrollView>
 	);
 };

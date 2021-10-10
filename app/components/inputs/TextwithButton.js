@@ -4,9 +4,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import { IconButton, Colors } from "react-native-paper";
 
-TextWithButton = ({ icon, title, link }) => {
+TextWithButton = ({ icon, title, link, onPress }) => {
 	return (
-		<View style={styles.container}>
+		<View style={styles.container} >
 			<View style={styles.container1}>
 				<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
 				<Text style={styles.text}>{title}</Text>
@@ -16,7 +16,7 @@ TextWithButton = ({ icon, title, link }) => {
 				icon="chevron-right"
 				color={Colors.gray200}
 				size={24}
-				onPress={() => console.log("arrow")}
+				onPress={onPress}
 			/>
 		</View>
 	);

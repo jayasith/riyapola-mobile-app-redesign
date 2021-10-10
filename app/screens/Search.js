@@ -9,6 +9,8 @@ import TopicText from "../components/texts/TopicText";
 import TitleText from "../components/texts/TitleText";
 import useFetch from "../hooks/useFetch";
 import listings from "../api/controllers/listings.controller";
+import SubtitleText from "../components/texts/SubtitleText";
+
 
 const Search = ({navigation}) => {
 	
@@ -32,11 +34,11 @@ const Search = ({navigation}) => {
 	return (
 		<View style={styles.background}>
 			<View style={styles.topic}>
-				<TitleText children={"Search"} />
+				<SubtitleText children={"Search"} />
 			</View>
 			<View style={styles.searchView}>
 				<View style={styles.inputs}>
-					<TextInput onChange={(e)=>{setSearchText(e.target.value);}} style={styles.searchInput} placeholder="Search" />
+					<TextInput onChangeText={(text)=>setSearchText(text)} style={styles.searchInput} placeholder="Search" />
 					<Feather
 						name="search"
 						size={24}
@@ -59,7 +61,7 @@ const Search = ({navigation}) => {
 					{ !error ? (
 					<View style={styles.cardContainer}>
 						{latestListings.map((latestListing) => (
-						// (SearchText.length !== 0) ?( 	latestListing.title.toLowerCase().includes(SearchText.toLowerCase()) && (
+						(SearchText.length !== 0) ?( 	latestListing.title.toLowerCase().includes(SearchText.toLowerCase()) && (
 							<Card
 								key={latestListing.id}
 								image={latestListing.images[0].url}
@@ -69,15 +71,15 @@ const Search = ({navigation}) => {
 								date={new Date().toDateString()}
 								onPress={()=>navigation.navigate("SingleItem", latestListing)}
 							/>
-						// )):(<Card
-						// 		key={latestListing.id}
-						// 		image={latestListing.images[0].url}
-						// 		title={latestListing.title}
-						// 		price={latestListing.price}
-						// 		seller="Thushara"
-						// 		date={new Date().toDateString()}
-						// 		onPress={()=>navigation.navigate("SingleItem", latestListing)}
-						// 	/>)
+						)):(<Card
+								key={latestListing.id}
+								image={latestListing.images[0].url}
+								title={latestListing.title}
+								price={latestListing.price}
+								seller="Thushara"
+								date={new Date().toDateString()}
+								onPress={()=>navigation.navigate("SingleItem", latestListing)}
+							/>)
 							))}
 					</View>
 				) : (
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
 	},
 	topic: {
 		alignSelf: "center",
-		top: -75,
+		top: -68,
 	},
 	background: {
 		marginTop: "20%",
