@@ -35,6 +35,23 @@ const PersonalData = () => {
 		}
 	};
 
+	const edituser = async () => {
+		try {
+			fetch("https://mywebsite.com/endpoint/", {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					firstParam: "yourValue",
+					secondParam: "yourOtherValue",
+				}),
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	useEffect(() => {
 		getuser();
 	}, []);
