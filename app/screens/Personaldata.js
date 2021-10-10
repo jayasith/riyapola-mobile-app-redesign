@@ -5,30 +5,69 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import DatePicker from "../components/pickers/Datepicker";
 import TextInputWithright from "../components/inputs/TextInputWithright";
 import RadioButtons from "../components/inputs/RadioButtons";
-import ImageInput from "../components/inputs/ProfileImageInput";
-
+import PersonalDataIMIn from "../components/inputs/PersonalDataImgIn";
+import ErrorInputWithRI from "../components/inputs/ErrorInputWithRI";
+import FormInputWithError from "../components/inputs/FormInputWithError";
+import Form from "../components/forms/Form";
+import * as Yup from "yup";
 import colors from "../config/colors";
-const PersonalData = () => {
-	return (
-		<ScrollView>
-			<TitleText style={styles.title}>Personal data</TitleText>
-			<ImageInput />
-			<Text style={styles.container}>Your Name :</Text>
-			<TextInputWithright placeholder="Your Name" icon="account-outline" />
 
-			<Text style={styles.container}>Birth date :</Text>
-			<DatePicker />
-			<Text style={styles.container}>Gender :</Text>
-			<RadioButtons />
-			<Text style={styles.container}>Your Job :</Text>
-			<TextInputWithright placeholder="Your Job" icon="briefcase-outline" />
-			<Text style={styles.container}>Your Location :</Text>
-			<TextInputWithright placeholder="Your Location" icon="map-marker" />
-			<PrimaryButton
-				title="Save"
-				style={{ width: "90%", top: 20, marginBottom: 60, marginTop: 20 }}
-			/>
-		</ScrollView>
+const validationSchema = Yup.object().shape({
+	name: Yup.string().required().nullable().label("Name"),
+	date: Yup.string().required().nullable().label("Date"),
+	job: Yup.string().required().nullable().label("Job"),
+	location: Yup.string().required().nullable().label("Location"),
+	image: Yup.string().required().min(1, "Please select at least one image"),
+});
+
+const PersonalData = () => {
+	const handleSubmit = async () => {
+		console.log("welcome");
+	};
+	return (
+		<Form
+			initialValues={{
+				name: "",
+				date: "",
+				job: "",
+				location: "",
+				image: null,
+			}}
+			onSubmit={handleSubmit}
+			validationSchema={validationSchema}
+		>
+			<ScrollView>
+				<TitleText style={styles.title}>Personal data</TitleText>
+				<PersonalDataIMIn name="image" />
+				<Text style={styles.container}>Your Name :</Text>
+				<ErrorInputWithRI
+					name="name"
+					placeholder="Your Name"
+					icon="account-outline"
+				/>
+
+				<Text style={styles.container}>Birth date :</Text>
+				<DatePicker name="date" placeholder="select birthdate" />
+				<Text style={styles.container}>Gender :</Text>
+				<RadioButtons />
+				<Text style={styles.container}>Your Job :</Text>
+				<ErrorInputWithRI
+					name="job"
+					placeholder="Your Job"
+					icon="briefcase-outline"
+				/>
+				<Text style={styles.container}>Your Location :</Text>
+				<ErrorInputWithRI
+					name="location"
+					placeholder="Your Location"
+					icon="map-marker"
+				/>
+				<PrimaryButton
+					title="Save"
+					style={{ width: "90%", top: 20, marginBottom: 60, marginTop: 20 }}
+				/>
+			</ScrollView>
+		</Form>
 	);
 };
 
