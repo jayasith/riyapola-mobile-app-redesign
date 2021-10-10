@@ -30,7 +30,7 @@ const ProfileScreen = ({ navigation }) => {
 			<TextWithButton
 				title="Settings"
 				icon="cog"
-				OnPress={() => navigation.navigate("SettingsScreen")}
+				OnPress={() => navigation.navigate("Settings")}
 			/>
 			<View style={styles.line} />
 			<TextWithButton title="Rate Us" icon="thumb-up" />

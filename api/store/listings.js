@@ -9,16 +9,7 @@ const listings = [
 		userId: 1,
 		city: "Gampaha",
 	},
-	{
-		id: 2,
-		title: "Audi RS6 Avant",
-		description: "I'm selling my car",
-		images: [{ fileName: "audi-rs6" }],
-		categoryId: 1,
-		price: 120000,
-		userId: 2,
-		city: "Colombo",
-	},
+
 	{
 		id: 3,
 		title: "Mustang 2018",
