@@ -30,7 +30,7 @@ const TextDatePicker = ({ value }) => {
 			<TextInput
 				style={styles.text}
 				placeholder="Your Birth date"
-				value={brithDate}
+				value={value}
 			/>
 
 			<IconButton

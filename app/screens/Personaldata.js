@@ -37,15 +37,18 @@ const PersonalData = () => {
 
 	const edituser = async () => {
 		try {
-			fetch("https://mywebsite.com/endpoint/", {
-				method: "POST",
+			fetch("http://192.168.1.3:5000/api/user/2", {
+				method: "PUT",
 				headers: {
 					Accept: "application/json",
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					firstParam: "yourValue",
-					secondParam: "yourOtherValue",
+					name: "",
+					email: "",
+					password: "",
+					Job: "",
+					Location: "",
 				}),
 			});
 		} catch (error) {
@@ -59,6 +62,7 @@ const PersonalData = () => {
 	console.log(user);
 	const handleSubmit = async () => {
 		console.log("welcome");
+		edituser();
 	};
 	return (
 		<Form
