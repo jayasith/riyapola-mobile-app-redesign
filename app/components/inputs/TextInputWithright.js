@@ -4,10 +4,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../../config/colors";
 
-const TextInputWithright = ({ icon, ...others }) => {
+const TextInputWithright = ({ icon, onChangeText, value, ...others }) => {
 	return (
 		<View style={styles.container}>
-			<TextInput {...others} style={styles.text} />
+			<TextInput
+				{...others}
+				style={styles.text}
+				onChangeText={onChangeText}
+				value={value}
+			/>
 			{icon && (
 				<MaterialCommunityIcons name={icon} size={25} style={styles.icon} />
 			)}

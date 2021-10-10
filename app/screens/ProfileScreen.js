@@ -13,8 +13,8 @@ const ProfileScreen = ({ navigation }) => {
 					source={require("../assets/images/icon.png")}
 					style={styles.image}
 				/>
-				<Text style={styles.title}>Hi Michelle</Text>
-				<Text style={styles.job}>Photographer</Text>
+				<Text style={styles.title}>Hi Nanduni</Text>
+				<Text style={styles.job}>Teacher</Text>
 			</View>
 			<View style={styles.line} />
 			<TextWithButton

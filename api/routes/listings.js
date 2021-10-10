@@ -34,10 +34,21 @@ const validateCategoryId = (req, res, next) => {
 
 router.get("/", (req, res) => {
 	const listings = store.getListings();
+	// console.log(listings);
 	const resources = listings.map(listingMapper);
 	res.send(resources);
 });
 
+router.get("/list", (req, res) => {
+	const listings = store.getListings().filter((listing) => {
+		return listing.userId === 2;
+		console.log(listing.userId === 2);
+		console.log(req.user.userId);
+	});
+	console.log(listings);
+	const resources = listings.map(listingMapper);
+	res.send(resources);
+});
 router.post(
 	"/",
 	[

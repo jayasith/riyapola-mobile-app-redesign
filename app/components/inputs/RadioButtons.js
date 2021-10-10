@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RadioGroup from "react-native-radio-buttons-group";
 import { View, StatusBar, Text, StyleSheet } from "react-native";
 import colors from "../../config/colors";
@@ -10,24 +10,31 @@ const radioButtonsData = [
 		label: "Male",
 		value: "Male",
 		color: "#1652DA",
+		selected: false,
 	},
 	{
 		id: "1",
 		label: "Female",
 		value: "Female",
 		color: "#1652DA",
+		selected: true,
 	},
 ];
 
-RadioButtons = () => {
+RadioButtons = ({ value }) => {
 	const [radioButtons, setRadioButtons] = useState(radioButtonsData);
 
-	function onPressRadioButton(radioButtonsArray) {
-		setRadioButtons(radioButtonsArray);
-		console.log(radioButtonsArray[0].label);
-		console.log(radioButtonsArray[1].label);
+	function onPressRadioButton(value) {
+		const m = value.filter((v) => {
+			return v.selected == true;
+		});
+		console.log(m);
 	}
-
+	useEffect(() => {
+		radioButtons.filter((r) => {
+			return r.value !== value;
+		});
+	}, []);
 	return (
 		<View style={styles.container}>
 			<RadioGroup

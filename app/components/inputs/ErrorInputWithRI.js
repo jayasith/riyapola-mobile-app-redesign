@@ -5,7 +5,7 @@ import { useFormikContext } from "formik";
 import TextInputWithright from "../inputs/TextInputWithright";
 import Error from "../toasts/Error";
 
-const ErrorInputWithRI = ({ name, ...other }) => {
+const ErrorInputWithRI = ({ name, value, ...other }) => {
 	const { errors, setFieldTouched, setFieldValue, touched, values } =
 		useFormikContext();
 	return (
@@ -14,7 +14,7 @@ const ErrorInputWithRI = ({ name, ...other }) => {
 			<TextInputWithright
 				{...other}
 				onChangeText={(text) => setFieldValue(name, text)}
-				value={values[name]}
+				value={value}
 				onBlur={() => setFieldTouched(name)}
 			/>
 		</>

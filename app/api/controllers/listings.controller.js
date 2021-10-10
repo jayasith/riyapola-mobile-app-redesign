@@ -1,6 +1,7 @@
 import apiClient from "../api.config";
 
 const getListings = () => apiClient.get("listings");
+const getByUserListing = () => apiClient.get("listings/list");
 
 const addListing = (listing, onUploadProgress) => {
 	const data = new FormData();
@@ -28,4 +29,5 @@ const addListing = (listing, onUploadProgress) => {
 export default {
 	getListings,
 	addListing,
+	getByUserListing,
 };

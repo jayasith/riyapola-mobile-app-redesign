@@ -7,10 +7,10 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import colors from "../../config/colors";
 
-const TextDatePicker = () => {
+const TextDatePicker = ({ value }) => {
 	const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 	const [date, setDate] = useState(new Date());
-	const [brithDate, setBirthDate] = useState("");
+	const [brithDate, setBirthDate] = useState(value);
 
 	const showDatePicker = () => {
 		setDatePickerVisibility(true);
@@ -31,7 +31,7 @@ const TextDatePicker = () => {
 			<TextInput
 				style={styles.text}
 				placeholder="Your Birth date"
-				value={brithDate}
+				value={value}
 			/>
 
 			<IconButton
